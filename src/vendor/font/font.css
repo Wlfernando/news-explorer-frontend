@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('./RobotoSlab-Regular.ttf') format('ttf');
+  src: url('./RobotoSlab-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('./RobotoSlab-Medium.ttf') format('ttf');
+  src: url('./RobotoSlab-Medium.ttf') format('truetype');
 }
 
 @font-face {
@@ -19,7 +19,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('./RobotoSlab-SemiBold.ttf') format('ttf');
+  src: url('./RobotoSlab-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
@@ -27,7 +27,7 @@
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url('./RobotoSlab-Black.ttf') format('ttf');
+  src: url('./RobotoSlab-Black.ttf') format('truetype');
 }
 
 @font-face {
@@ -35,7 +35,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('./Roboto-Regular.ttf') format('ttf');
+  src: url('./Roboto-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -43,7 +43,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('./Roboto-Medium.ttf') format('ttf');
+  src: url('./Roboto-Medium.ttf') format('truetype');
 }
 
 @font-face {
@@ -51,7 +51,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('./Roboto-Bold.ttf') format('ttf');
+  src: url('./Roboto-Bold.ttf') format('truetype');
 }
 
 @font-face {
@@ -59,5 +59,5 @@
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url('./Roboto-Black.ttf') format('ttf');
+  src: url('./Roboto-Black.ttf') format('truetype');
 }

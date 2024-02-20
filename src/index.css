@@ -1,3 +1,6 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/font/font.css);
+
 :root * {
   margin: 0
 }

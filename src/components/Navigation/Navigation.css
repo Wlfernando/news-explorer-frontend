@@ -1,0 +1,17 @@
+.navigation__menu {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  align-items: center;
+  justify-self: end;
+}
+
+.navigation__menu, .navigation__list {
+  display: flex;
+  column-gap: 16px;
+}
+
+.navigation__logout-icon {
+  position: relative;
+  top: 2px
+}
