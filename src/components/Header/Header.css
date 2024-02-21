@@ -1,9 +1,20 @@
 .header {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  grid-template-rows: 80px calc(576px - 80px);
+  color: #fff;
+}
+
+.header_history_main {
+  grid-template-rows: 80px calc(576px - 80px);
+  background-image: url('../../images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg');
+}
+
+.header__nav {
   width: 90%;
-  height: 80px;
   display: grid;
   align-items: center;
-  justify-content: space-between;
   border-bottom: 1px solid #C4C4C4;
   grid-template-columns: repeat(2, 1fr);
   padding-inline: 5%;

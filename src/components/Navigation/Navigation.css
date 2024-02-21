@@ -13,5 +13,9 @@
 
 .navigation__logout-icon {
   position: relative;
-  top: 2px
+  top: 2px;
+}
+
+.navigation_logout-icon_history_main {
+  fill: #fff;
 }
