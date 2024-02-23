@@ -1,5 +1,6 @@
 import './Header.css'
 import Navigation from '../Navigation/Navigation.jsx';
+import SearchForm from '../SearchForm/SearchForm.jsx';
 
 export default function Header() {
 
@@ -8,6 +9,6 @@ export default function Header() {
       <h1 className="header__title">NewsExplorer</h1>
       <Navigation />
     </div>
-    
+    <SearchForm />
   </header>
 }

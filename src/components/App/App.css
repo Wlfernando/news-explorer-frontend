@@ -10,9 +10,6 @@
 
 .button {
   border-radius: 30px;
-  background-color: transparent;
-  border: 1px solid #fff;
-  height: 48px;
-  padding: 0 20px;
+  padding: 0 35px;
   cursor: pointer;
 }

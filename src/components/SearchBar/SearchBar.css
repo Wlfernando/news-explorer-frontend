@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+  background-color: #fff;
+  border-radius: 31px;
+  height: fit-content;
+  position: relative;
+}
+
+.form__search {
+  width: calc(608px - 168px);
+  border: none;
+  height: 62px;
+  border-radius: 30px;
+  color: black;
+  padding-left: 20px;
+  outline: none;
+}
+
+.form__button_type_search {
+  height: 64px;
+  position: absolute;
+  right: 0;
+}

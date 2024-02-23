@@ -19,3 +19,9 @@
 .navigation_logout-icon_history_main {
   fill: #fff;
 }
+
+.navigation__button {
+  background-color: transparent;
+  border: 1px solid #fff;
+  height: 48px;
+}

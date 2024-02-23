@@ -26,6 +26,6 @@ export default function Navivation() {
         {isLog && <li>Articulos guardados</li>}
       </ul>
     </nav>
-    <button type="button" className='button'>{txtBtn}{imgBtn}</button>
+    <button type="button" className='button navigation__button'>{txtBtn}{imgBtn}</button>
   </menu>
 }
