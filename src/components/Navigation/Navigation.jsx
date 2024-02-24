@@ -1,6 +1,11 @@
 import './Navigation.css';
+import useSize from '../../hooks/useSize';
+import HamburgerBtn from '../HamburgerBtn/HamburgerBtn';
+import { NavLink } from 'react-router-dom';
 
-export default function Navivation() {
+export default function Navigation({onOpen}) {
+  const size = useSize();
+  const [isOpen] = onOpen;
   const isLog = Boolean(localStorage.getItem('email'));
   const txtBtn = isLog ? 'Fer ' : 'Iniciar sesión';
   const imgBtn = isLog ?
@@ -19,13 +24,14 @@ export default function Navivation() {
     </svg> :
     undefined;
 
-  return <menu className='navigation__menu'>
-    <nav>
-      <ul className='navigation__list'>
-        <li>Inicio</li>
-        {isLog && <li>Articulos guardados</li>}
-      </ul>
-    </nav>
-    <button type="button" className='button navigation__button'>{txtBtn}{imgBtn}</button>
-  </menu>
+  return <>
+    {size !== 'desktop' && <HamburgerBtn onOpen={onOpen} />}
+    <menu className={`navigation__menu${isOpen ? ' navigation__menu_active' : ''}`}>
+      <nav className='navigation__list'>
+        <NavLink to='#' className='navigation__link' >Inicio</NavLink>
+        {isLog && <NavLink to='#' className='navigation__link' >Articulos guardados</NavLink>}
+      </nav>
+      <button type="button" className='button navigation__button'>{txtBtn}{imgBtn}</button>
+    </menu>
+  </>
 }

@@ -25,3 +25,34 @@
   border: 1px solid #fff;
   height: 48px;
 }
+
+.navigation__link {
+  text-decoration-line: none;
+  color: inherit;
+}
+
+@media screen and (width < 768px) {
+  .navigation__menu {
+    position: absolute;
+    top: 9.8%;
+    right: 0;
+    align-items: flex-start;
+    background-color: #1A1B22;
+    width: 100%;
+    display: none;
+  }
+
+  .navigation__menu, .navigation__list {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  .navigation__list, .navigation__button {
+    margin-inline-start: 16px;
+  }
+
+  .navigation__menu_active {
+    padding: 15px 0;
+    display: flex;
+  }
+}

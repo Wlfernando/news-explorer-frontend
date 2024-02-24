@@ -4,11 +4,12 @@
   justify-items: center;
   grid-template-rows: 80px calc(576px - 80px);
   color: #fff;
+  position: relative;
 }
 
 .header_history_main {
   grid-template-rows: 80px calc(576px - 80px);
-  background-image: url('../../images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg');
+  background: center url('../../images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg');
 }
 
 .header__nav {
@@ -16,7 +17,7 @@
   display: grid;
   align-items: center;
   border-bottom: 1px solid #C4C4C4;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: max-content 1fr;
   padding-inline: 5%;
 }
 
@@ -24,4 +25,24 @@
   font-size: 20px;
   font-family: 'RobotoSlab', sans-serif;
   font-weight: 700;
+}
+
+@media screen and (width < 768px) {
+  .header {
+    grid-template-rows: 56px calc(576px - 56px);
+  }
+
+  .header__title {
+    font-size: 16px;
+  }
+
+  .header__nav {
+    padding-inline: 2.5%;
+    width: 95%;
+    background-color: transparent;
+  }
+
+  .header__nav_active {
+    background-color: #1A1B22;
+  }
 }
