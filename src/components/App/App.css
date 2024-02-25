@@ -13,3 +13,9 @@
   padding: 0 35px;
   cursor: pointer;
 }
+
+@media screen and (width < 768px) {
+  .page {
+    row-gap: 40px;
+  }
+}

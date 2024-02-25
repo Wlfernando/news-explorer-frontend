@@ -1,20 +1,21 @@
 .about {
   display: flex;
-  align-items: center;
-  column-gap: 56px;
+  gap: 56px;
   width: 90%;
 }
 
 .about__image {
-  width: 464px;
-  height: 464px;
+  width: 32vw;
+  height: 32vw;
   border-radius: 50%;
   object-fit: cover;
+  align-self: center;
 }
 
 .about__brief {
   display: grid;
   row-gap: 24px;
+  flex-basis: 60%;
 }
 
 .about__title {
@@ -29,4 +30,27 @@
   font-weight: 400;
   line-height: 24px;
   font-family: 'Roboto'
+}
+
+@media screen and (width < 768px) {
+  .about {
+    flex-direction: column;
+  }
+
+  .about__image {
+    width: 272px;
+    height: 272px;
+  }
+
+  .about__title {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+
+@media screen and (width > 1440px) {
+  .about__image {
+    width: 464px;
+    height: 464px;
+  }
 }
