@@ -102,6 +102,9 @@ pre {
 
 a {
     background-color: transparent;
+    font-family: inherit;
+    text-decoration-line: none;
+    color: inherit;
 }
 
 

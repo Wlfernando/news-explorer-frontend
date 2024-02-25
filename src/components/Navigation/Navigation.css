@@ -26,11 +26,6 @@
   height: 48px;
 }
 
-.navigation__link {
-  text-decoration-line: none;
-  color: inherit;
-}
-
 @media screen and (width < 768px) {
   .navigation__menu {
     position: absolute;
