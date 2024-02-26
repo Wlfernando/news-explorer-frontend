@@ -3,11 +3,16 @@
   font-size: 18px;
   font-weight: 500;
   align-items: center;
+  grid-column: 4;
 }
 
-.navigation__menu, .navigation__list {
+.navigation__menu {
   display: flex;
   column-gap: 16px;
+}
+
+.navigation__menu, .navigation__link, .navigation__button {
+  width: max-content;
 }
 
 .navigation__logout-icon {
@@ -28,25 +33,22 @@
 @media screen and (width < 768px) {
   .navigation__menu {
     position: absolute;
-    top: 9.8%;
-    right: 0;
-    align-items: flex-start;
-    background-color: #1A1B22;
     width: 100%;
+    background-color: #1A1B22;
+    align-self: start;
+    grid-row: 3;
+    grid-column: 1;
     display: none;
   }
 
-  .navigation__menu, .navigation__list {
-    flex-direction: column;
-    row-gap: 20px;
-  }
-
-  .navigation__list, .navigation__button {
-    margin-inline-start: 16px;
-  }
-
   .navigation__menu_active {
+    gap: 20px 0;
     padding: 15px 0;
-    display: flex;
+    display: grid;
+    grid-template-columns: 7% auto;
+  }
+
+  .navigation__link, .navigation__button {
+    grid-column: 2;
   }
 }

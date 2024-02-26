@@ -29,3 +29,9 @@
 .saved-news__button_icon_trash:hover {
   background-image: url(../../images/trash-hover.svg);
 }
+
+@media screen and (width < 768px) {
+  .saved-news__menu {
+    margin-top: 16px;
+  }
+}

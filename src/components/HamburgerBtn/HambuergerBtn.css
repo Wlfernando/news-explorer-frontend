@@ -8,6 +8,7 @@
   row-gap: 4px;
   background: transparent;
   border: none;
+  grid-column: 4;
 }
 
 .hamburger-btn__bar {

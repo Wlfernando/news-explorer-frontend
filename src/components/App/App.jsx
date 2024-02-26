@@ -11,7 +11,7 @@ export default function App() {
     <div className='page'>
       <Header />
       <NewsCardList>
-        {Array(32).fill(<SavedNews />)}
+        {Array(5).fill(<SearchedNews />)}
       </NewsCardList>
       <About />
       <Footer />

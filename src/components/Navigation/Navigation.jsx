@@ -27,10 +27,8 @@ export default function Navigation({onOpen}) {
   return <>
     {size !== 'desktop' && <HamburgerBtn onOpen={onOpen} />}
     <menu className={`navigation__menu${isOpen ? ' navigation__menu_active' : ''}`}>
-      <nav className='navigation__list'>
-        <NavLink to='#' className='navigation__link' >Inicio</NavLink>
-        {isLog && <NavLink to='#' className='navigation__link' >Articulos guardados</NavLink>}
-      </nav>
+      <NavLink to='#' className='navigation__link' >Inicio</NavLink>
+      {isLog && <NavLink to='#' className='navigation__link' >Articulos guardados</NavLink>}
       <button type="button" className='button navigation__button'>{txtBtn}{imgBtn}</button>
     </menu>
   </>

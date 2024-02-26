@@ -2,48 +2,39 @@
   width: 100%;
   display: grid;
   justify-items: center;
-  grid-template-rows: 80px calc(576px - 80px);
+  grid-template-columns: 7% min-content auto min-content 7%;
   color: #fff;
   position: relative;
+  align-items: center;
 }
 
 .header_history_main {
-  grid-template-rows: 80px calc(576px - 80px);
-  background: center url('../../images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg');
-}
-
-.header__nav {
-  width: 90%;
-  display: grid;
-  align-items: center;
-  border-bottom: 1px solid #C4C4C4;
-  grid-template-columns: repeat(2, auto);
-  justify-content: space-between;
-  padding-inline: 5%;
+  grid-template-rows: 80px auto calc(576px - 80px);
+  background: center/cover no-repeat url('../../images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg');
 }
 
 .header__title {
   font-size: 20px;
   font-family: 'RobotoSlab', sans-serif;
   font-weight: 700;
+  grid-column: 2;
+}
+
+.header__line {
+  grid-column: span 5;
+  width: 100%;
 }
 
 @media screen and (width < 768px) {
   .header {
-    grid-template-rows: 56px calc(576px - 56px);
+    grid-template-rows: 56px auto calc(576px - 56px);
   }
 
   .header__title {
     font-size: 16px;
   }
 
-  .header__nav {
-    padding-inline: 2.5%;
-    width: 95%;
-    background-color: transparent;
-  }
-
-  .header__nav_active {
-    background-color: #1A1B22;
+  .header_shadow {
+    box-shadow: inset 0 56px #1A1B22;
   }
 }

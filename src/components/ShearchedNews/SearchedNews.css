@@ -33,3 +33,9 @@
 .searched-news__button_icon_non-fav:hover {
   background-image: url(../../images/non-favorite-hover.svg);
 }
+
+@media screen and (width < 768px) {
+  .searched-news__menu {
+    margin-top: 16px;
+  }
+}

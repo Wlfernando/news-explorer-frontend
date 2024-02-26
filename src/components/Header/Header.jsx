@@ -6,11 +6,10 @@ import { useState } from 'react';
 export default function Header() {
   const openMenu = useState(false);
 
-  return <header className="header header_history_main">
-    <div className={`header__nav${openMenu[0] ? ' header__nav_active' : ''}`}>
-      <h1 className="header__title">NewsExplorer</h1>
-      <Navigation onOpen={openMenu} />
-    </div>
+  return <header className={`header header_history_main ${openMenu[0] ?" header_shadow" : ""}`}>
+    <h1 className="header__title">NewsExplorer</h1>
+    <Navigation onOpen={openMenu} />
+    <hr className='header__line' />
     <SearchForm />
   </header>
 }
