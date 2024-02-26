@@ -1,0 +1,11 @@
+.news-card-list {
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+  gap: 16px;
+}
+
+@media screen and (width >= 768px) {
+  .news-card-list {
+    grid-template-columns: repeat(3, auto);
+  }
+}

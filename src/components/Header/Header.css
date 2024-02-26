@@ -17,7 +17,8 @@
   display: grid;
   align-items: center;
   border-bottom: 1px solid #C4C4C4;
-  grid-template-columns: max-content 1fr;
+  grid-template-columns: repeat(2, auto);
+  justify-content: space-between;
   padding-inline: 5%;
 }
 

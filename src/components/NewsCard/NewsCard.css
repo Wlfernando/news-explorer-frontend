@@ -6,7 +6,7 @@
   grid-template-columns: 400px;
   row-gap: 12px;
   overflow: hidden;
-  margin-inline: 20px;
+  background-color: #fff;
 }
 
 .news-card__figure {
@@ -74,9 +74,21 @@
   }
 
   .news-card__title {
+    -webkit-line-clamp: 2;
+  }
+}
+
+@media screen and (width < 1261px) {
+  .news-card {
+    height: 420px;
+    grid-template-rows: 150px 24px 96px 66px 20px;
+    grid-template-columns: 224px;
+  }
+
+  .news-card__title {
     font-size: 22px;
     line-height: 24px;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 4;
   }
 
   .news-card > :not(.news-card__figure) {
