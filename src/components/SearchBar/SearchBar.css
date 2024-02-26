@@ -27,8 +27,8 @@
     flex-direction: column;
     background-color: transparent;
     row-gap: 16px;
-    width: 224px;
-    margin: auto;
+    width: 288px;
+    align-self: center;
   }
 
   .form__button_type_search {
