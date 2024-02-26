@@ -1,5 +1,5 @@
 import './NewsCard.css';
-import image from '../../images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg'
+import image from '../../images/image_08.jpg'
 
 export default function NewsCard({children}) {
   return <li className='news-card'>
