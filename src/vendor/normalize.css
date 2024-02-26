@@ -201,6 +201,10 @@ img {
  * 2. Elimina el margen en Firefox y Safari.
  */
 
+button {
+  border: none;
+}
+
 button,
 input,
 optgroup,
