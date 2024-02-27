@@ -40,6 +40,34 @@ background: transparent url(../../../images/close.svg);
   color: #fff;
 }
 
+.modal__label {
+  font-family: 'Inter';
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #2F71E5;
+}
+
+.modal__error {
+  font-family: 'Inter';
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  color: #FF0000;
+}
+
+.modal__item {
+  border: unset;
+  border-bottom: 1px solid rgb(0 0 0 / .3);
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Inter';
+}
+
+.modal__item::placeholder {
+  opacity: .5;
+}
+
 @media screen and (width < 558px) {
   .modal {
     align-content: end;

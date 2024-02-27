@@ -15,6 +15,5 @@ export default function ModalWithForm({
       {children}
     </Form>
     <button type='button' className='modal__closer' />
-    {paragraph}
   </div>
 }

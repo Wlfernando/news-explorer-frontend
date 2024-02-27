@@ -5,12 +5,11 @@ export default function SignInModal({isOpen}) {
   return <ModalWithForm
     isOpen={isOpen}
     title={'Iniciar sesión'}
-    formClass={'form-sign-in'}
-    paragraph={''}
+    formClass={'sign-in'}
   >
-    <label for='email' className='form-sign-in__label'>Correo eletrónico</label>
+    <label for='email' className='modal__label sign-in__label_type_email'>Correo eletrónico</label>
     <input
-      className='form-sign-in__item'
+      className='modal__item sign-in__item_type_email'
       placeholder='Introduce tu correo eletrónico'
       type='email'
       name='email'
@@ -18,17 +17,17 @@ export default function SignInModal({isOpen}) {
       minLength='2'
       maxLength='30'
     />
-    <span className='form-sign-in__error'></span>
-    <label for='password' className='form-sign-in__label'>Contraseña</label>
+    <span className='modal__error sign-in__error_type_email'></span>
+    <label for='password' className='modal__label sign-in__label_type_pass'>Contraseña</label>
     <input
-      className='form-sign-in__item'
+      className='modal__item sign-in__item_type_pass'
       placeholder='Introduce tu contraseña'
       type='password'
       name='password'
       required
       minLength='4'
     />
-    <span className='form-sign-in__error'></span>
-    <span className="form-sign-in__error"></span>
+    <span className='modal__error sign-in__error_type_pass'></span>
+    <span className="modal__error sign-in__error_type_form"></span>
   </ModalWithForm>
 }
