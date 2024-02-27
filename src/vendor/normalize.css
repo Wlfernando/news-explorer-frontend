@@ -203,6 +203,7 @@ img {
 
 button {
   border: none;
+  cursor: pointer;
 }
 
 button,

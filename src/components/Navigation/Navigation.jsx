@@ -29,7 +29,7 @@ export default function Navigation({onOpen}) {
     <menu className={`navigation__menu${isOpen ? ' navigation__menu_active' : ''}`}>
       <NavLink to='#' className='navigation__link' >Inicio</NavLink>
       {isLog && <NavLink to='#' className='navigation__link' >Articulos guardados</NavLink>}
-      <button type="button" className='button navigation__button'>{txtBtn}{imgBtn}</button>
+      <button type="button" className='navigation__button'>{txtBtn}{imgBtn}</button>
     </menu>
   </>
 }

@@ -8,6 +8,6 @@ export default function Form({name, className, onSubmit, children, btnTxt, modBt
 
   return <form className={className} name={name} noValidate onSubmit={handleSubmit}>
     {children}
-    <button className={`button form__button${modBtn ? ' form__button_type_' + modBtn : ''}`} type="submit" >{btnTxt}</button>
+    <button className={`form__button${modBtn ? ' form__button_type_' + modBtn : ''}`} type="submit" >{btnTxt}</button>
   </form>
 }

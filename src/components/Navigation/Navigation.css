@@ -28,6 +28,8 @@
   background-color: transparent;
   border: 1px solid #fff;
   height: 48px;
+  border-radius: 30px;
+  padding: 0 35px;
 }
 
 @media screen and (width < 768px) {
