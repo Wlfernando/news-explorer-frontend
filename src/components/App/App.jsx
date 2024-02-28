@@ -8,7 +8,7 @@ import SearchRsults from '../SearchResults/SearchResults.jsx'
 import './App.css'
 
 export default function App() {
-  const [modals, openModal, closeAllModals] = useModal('sign-in', 'sign-up');
+  const [modals, openModal, closeAllModals] = useModal('signIn', 'signUp', 'toolTip');
 
   return (
     <div className='page'>

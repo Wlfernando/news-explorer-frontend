@@ -1,4 +1,5 @@
 import Form from '../../Form/Form.jsx';
+import Modal from '../Modal/Modal.jsx';
 import './ModalWithForm.css';
 
 export default function ModalWithForm({
@@ -9,11 +10,11 @@ export default function ModalWithForm({
   paragraph,
   name,
 }) {
-  return <div className={`modal${isOpen ? ' modal_open' : ''}`} inert={!isOpen}>
+  return <Modal isOpen={isOpen}>
     <Form className={`modal__form modal__form_class_${formClass}`} modBtn={'modal'} btnTxt={title} name={name}>
       <h3 className="modal__title">{title}</h3>
       {children}
     </Form>
     <button type='button' className='modal__closer' />
-  </div>
+  </Modal>
 }
