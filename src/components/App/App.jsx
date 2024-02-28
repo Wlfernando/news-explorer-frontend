@@ -1,23 +1,22 @@
+import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min.js'
 import useModal from '../../hooks/useModal.js'
-import About from '../About/About.jsx'
 import Footer from '../Footer/Footer.jsx'
-import Header from '../Header/Header.jsx'
-import InfoToolTip from '../Modals/InfoToolTip/InfoToolTip.jsx'
-import SignInModal from '../Modals/SignInModal/SignInModal.jsx'
-import SignUpModal from '../Modals/SignUpModal/SignUpModal.jsx'
-import SearchRsults from '../SearchResults/SearchResults.jsx'
 import './App.css'
+import Home from '../Main/Home/Home.jsx'
 
 export default function App() {
-  const [modals, openModal, closeAllModals] = useModal('signIn', 'signUp', 'toolTip');
+  const modals = useModal('signIn', 'signUp', 'toolTip');
 
   return (
     <div className='page'>
-      <Header />
-      <SearchRsults />
-      <About />
-      <SignUpModal />
-      <InfoToolTip isOpen/>
+      <Switch>
+        <Route path='saved-news'>
+
+        </Route>
+        <Route path='/' exact>
+          <Home modals={modals}/>
+        </Route>
+      </Switch>
       <Footer />
     </div>
   )
