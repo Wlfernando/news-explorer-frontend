@@ -3,14 +3,8 @@
   display: grid;
   justify-items: center;
   grid-template-columns: 7% min-content auto min-content 7%;
-  color: #fff;
   position: relative;
   align-items: center;
-}
-
-.header_history_main {
-  grid-template-rows: 80px auto calc(576px - 80px);
-  background: center/cover no-repeat url('../../images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg');
 }
 
 .header__title {
