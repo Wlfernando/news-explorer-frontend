@@ -1,5 +1,5 @@
 import About from "../../About/About.jsx";
-import SearchRsults from "../../SearchResults/SearchResults.jsx";
+import SearchRsults from "../../Cards/SearchResults/SearchResults.jsx";
 import SignInModal from "../../Modals/SignInModal/SignInModal.jsx";
 import SignUpModal from "../../Modals/SignUpModal/SignUpModal.jsx";
 import InfoToolTip from "../../Modals/InfoToolTip/InfoToolTip.jsx";
