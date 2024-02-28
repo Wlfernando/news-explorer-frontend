@@ -11,10 +11,9 @@ export default function ModalWithForm({
   name,
 }) {
   return <Modal isOpen={isOpen}>
-    <Form className={`modal__form modal__form_class_${formClass}`} modBtn={'modal'} btnTxt={title} name={name}>
+    <Form className={`modal__content modal__form_class_${formClass}`} modBtn={'modal'} btnTxt={title} name={name}>
       <h3 className="modal__title">{title}</h3>
       {children}
     </Form>
-    <button type='button' className='modal__closer' />
   </Modal>
 }

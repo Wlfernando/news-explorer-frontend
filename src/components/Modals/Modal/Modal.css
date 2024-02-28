@@ -5,7 +5,9 @@
   background-color: rgba(0, 0, 0, .3);
   visibility: hidden;
   opacity: 0;
-  transition: all 150ms ease-in-out;
+  transition:
+    visibility 250ms ease-in-out,
+    opacity 250ms ease-in-out;
   grid-template-columns: 430px 40px;
   grid-template-rows: 40px max-content;
   place-content: center;
@@ -15,4 +17,46 @@
 .modal_open {
   visibility: visible;
   opacity: 1;
+}
+
+.modal__title {
+  font-family: 'Roboto';
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 28px;
+  grid-row: span 3;
+  padding-top: 34px;
+}
+
+.modal__content {
+  background-color: #fff;
+  grid-row: 2;
+  border-radius: 20px;
+}
+
+.modal__content > * {
+  grid-column: 2;
+}
+
+.modal__closer {
+  grid-column: 2;
+  background: transparent url(../../../images/close.svg);
+}
+
+@media screen and (width < 558px) {
+  .modal {
+    align-content: end;
+    grid-template-columns: 100%;
+    grid-template-rows: 40px minmax(400px, 520px);
+  }
+
+  .modal__content {
+    border-radius: 20px 20px 0 0;
+  }
+
+  .modal__closer {
+    grid-column: 1;
+    justify-self: end;
+    aspect-ratio: 1;
+  }
 }

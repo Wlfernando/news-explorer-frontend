@@ -1,0 +1,16 @@
+.info-tooltip {
+  display: grid;
+  grid-template-columns: 36px 1fr 36px;
+  grid-template-rows: 34px 56px 14px 18px 51px;
+  justify-content: center;
+}
+
+.info-tooltip__btn {
+  width: max-content;
+  background-color: transparent;
+  color: #2F71E5;
+  font-family: 'Inter';
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+}
