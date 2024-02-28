@@ -1,4 +1,4 @@
-import NewsCard from '../NewsCard/NewsCard.jsx'
+import NewsCard from '../Cards/NewsCard/NewsCard.jsx'
 import './SearchedNews.css'
 
 export default function SearchedNews() {

@@ -1,5 +1,5 @@
-import NewsCardList from '../NewsCardList/NewsCardList.jsx';
-import SearchedNews from '../ShearchedNews/SearchedNews.jsx';
+import NewsCardList from '../Cards/NewsCardList/NewsCardList.jsx';
+import SearchedNews from '../SearchedNews/SearchedNews.jsx';
 import './SearchResults.css';
 
 export default function SearchRsults() {
