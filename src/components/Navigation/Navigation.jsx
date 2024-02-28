@@ -3,13 +3,13 @@ import useSize from '../../hooks/useSize';
 import HamburgerBtn from '../HamburgerBtn/HamburgerBtn';
 import { NavLink } from 'react-router-dom';
 
-export default function Navigation({onOpen}) {
+export default function Navigation({onOpen, classMod}) {
   const size = useSize();
   const [isOpen] = onOpen;
   const isLog = Boolean(localStorage.getItem('email'));
   const txtBtn = isLog ? 'Fer ' : 'Iniciar sesión';
   const imgBtn = isLog ?
-    <svg className='navigation__logout-icon navigation_logout-icon_history_main'
+    <svg className={`navigation__logout-icon header__svg_route_${classMod}`}
       width="18"
       height="16"
       viewBox="0 0 18 16"
@@ -25,11 +25,11 @@ export default function Navigation({onOpen}) {
     undefined;
 
   return <>
-    {size !== 'desktop' && <HamburgerBtn onOpen={onOpen} />}
+    {size !== 'desktop' && <HamburgerBtn onOpen={onOpen} classMod={classMod} />}
     <menu className={`navigation__menu${isOpen ? ' navigation__menu_active' : ''}`}>
       <NavLink to='#' className='navigation__link' >Inicio</NavLink>
       {isLog && <NavLink to='#' className='navigation__link' >Articulos guardados</NavLink>}
-      <button type="button" className='navigation__button'>{txtBtn}{imgBtn}</button>
+      <button type="button" className={`navigation__button header__button_route_${classMod}`}>{txtBtn}{imgBtn}</button>
     </menu>
   </>
 }

@@ -4,7 +4,9 @@
   grid-template-rows: 24px 92px 1fr;
   row-gap: 30px;
   font-family: 'Roboto';
-  margin: 3% 7%;
+  margin: 3% 0;
+  grid-column: 2 / 5;
+  justify-self: start;
 }
 
 .news-info__title {

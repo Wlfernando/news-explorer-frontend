@@ -3,6 +3,7 @@
   display: grid;
   justify-items: center;
   grid-template-columns: 7% min-content auto min-content 7%;
+  grid-template-rows: 80px;
   position: relative;
   align-items: center;
 }
@@ -21,11 +22,12 @@
 
 @media screen and (width < 768px) {
   .header {
-    grid-template-rows: 56px auto calc(576px - 56px);
+    grid-template-rows: 56px;
   }
 
   .header__title {
     font-size: 16px;
+    transition: color 200ms linear;
   }
 
   .header_shadow {

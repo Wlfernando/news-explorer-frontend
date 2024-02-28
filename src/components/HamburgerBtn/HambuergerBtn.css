@@ -13,7 +13,6 @@
 
 .hamburger-btn__bar {
   height: 2px;
-  background-color: #fff;
   width: 16px;
   position: relative;
   transition: all 250ms ease-in-out;

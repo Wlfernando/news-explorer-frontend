@@ -1,5 +1,16 @@
 .header_route_home {
   color: #fff;
-  grid-template-rows: 80px auto calc(576px - 80px);
   background: center/cover no-repeat url(../../../images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg);
+}
+
+.header__svg_route_home {
+  fill: #fff;
+}
+
+.header__button_route_home {
+  border: 1px solid #fff;
+}
+
+.header__hamburger_route_home {
+  background-color: #fff;
 }

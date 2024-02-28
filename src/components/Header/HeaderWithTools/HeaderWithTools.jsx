@@ -6,11 +6,12 @@ export default function HeaderWithTools({
   children,
   classMod,
 }) {
-  const openMenu = useState(false);
+  const hamburgerBtnState = useState(false);
+  const [isOpen] = hamburgerBtnState;
 
-  return <header className={`header header_route_${classMod} ${openMenu[0] ?" header_shadow" : ""}`}>
-    <h1 className="header__title">NewsExplorer</h1>
-    <Navigation onOpen={openMenu} />
+  return <header className={`header header_route_${classMod} ${isOpen ?" header_shadow" : ""}`}>
+    <h1 className={`header__title${isOpen ? ' header__title_open' : ''}`}>NewsExplorer</h1>
+    <Navigation onOpen={hamburgerBtnState} classMod={classMod} />
     <hr className='header__line' />
     {children}
   </header>
