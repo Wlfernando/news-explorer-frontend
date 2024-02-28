@@ -7,9 +7,9 @@ export default function SignUpModal({isOpen}) {
     title={'Regístrate'}
     formClass={'sign-up'}
   >
-    <label htmlFor='email' className='modal__label sign-up__label_type_email'>Correo eletrónico</label>
+    <label htmlFor='email' className='modal__label'>Correo eletrónico</label>
     <input
-      className='modal__item sign-up__item_type_email'
+      className='modal__item'
       placeholder='Introduce tu correo eletrónico'
       type='email'
       name='email'
@@ -17,27 +17,27 @@ export default function SignUpModal({isOpen}) {
       minLength='2'
       maxLength='30'
     />
-    <span className='modal__error sign-up__error_type_email'></span>
-    <label htmlFor='password' className='modal__label sign-up__label_type_pass'>Contraseña</label>
+    <span className='modal__error'></span>
+    <label htmlFor='password' className='modal__label'>Contraseña</label>
     <input
-      className='modal__item sign-up__item_type_pass'
+      className='modal__item'
       placeholder='Introduce tu contraseña'
       type='password'
       name='password'
       required
       minLength='4'
     />
-    <span className='modal__error sign-up__error_type_pass'></span>
-    <label htmlFor='name' className='modal__label sign-up__label_type_name'>Nombre de usuario</label>
+    <span className='modal__error'></span>
+    <label htmlFor='name' className='modal__label'>Nombre de usuario</label>
     <input
-      className='modal__item sign-up__item_type_name'
+      className='modal__item'
       placeholder='Introduce tu nombre de usuario'
       type='text'
       name='name'
       required
       minLength='4'
     />
-    <span className='modal__error sign-up__error_type_name'></span>
-    <span className="modal__error sign-up__error_type_form"></span>
+    <span className='modal__error'></span>
+    <span className="modal__error"></span>
   </ModalWithForm>
 }

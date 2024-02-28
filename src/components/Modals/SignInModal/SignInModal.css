@@ -1,50 +1,6 @@
-.sign-in {
+.modal__form_class_sign-in {
   display: grid;
   grid-template-columns: 36px minmax(max-content, 358px) 36px;
   grid-template-rows: 34px 32px repeat(2, 22px 14px 23px) 22px 22px 64px 16px 20px 28px;
   justify-content: center;
-}
-
-.sign-in > * {
-  grid-column: 2;
-}
-
-.sign-in > :nth-child(1) {
-  grid-row: 2;
-}
-
-.sign-in__label_type_email {
-  grid-row: 4;
-}
-
-.sign-in__item_type_email {
-  grid-row: 5;
-}
-
-.sign-in__error_type_email {
-  grid-row: 6;
-}
-
-.sign-in__label_type_pass {
-  grid-row: 7;
-}
-
-.sign-in__item_type_pass {
-  grid-row: 8;
-}
-
-.sign-in__error_type_pass {
-  grid-row: 9;
-}
-
-.sign-in__error_type_form {
-  grid-row: 10;
-}
-
-.sign-in > :nth-child(9) {
-  grid-row: 11;
-}
-
-.sign-in > :nth-child(10) {
-  grid-row: 13;
 }

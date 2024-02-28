@@ -1,14 +1,5 @@
-.sign-up {
+.modal__form_class_sign-up {
   display: grid;
   grid-template-columns: 36px 1fr 36px;
   grid-template-rows: 34px 32px repeat(3, 22px 14px 23px) 22px 22px 64px 16px 20px 28px;
-}
-
-.sign-up > * {
-  grid-column: 2;
-}
-
-.sign-up > :nth-child(1) {
-  grid-row: span 3;
-  padding-top: 34px;
 }
