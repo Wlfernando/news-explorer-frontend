@@ -2,7 +2,8 @@
   font-family: 'Roboto';
   display: flex;
   justify-content: space-between;
-  width: 90%
+  width: 90%;
+  padding: 24px 0;
 }
 
 .footer__icon {

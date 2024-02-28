@@ -3,6 +3,7 @@ import useModal from '../../hooks/useModal.js'
 import Footer from '../Footer/Footer.jsx'
 import './App.css'
 import Home from '../Main/Home/Home.jsx'
+import SavedNews from '../Main/SavedNews/SavedNews.jsx'
 
 export default function App() {
   const modals = useModal('signIn', 'signUp', 'toolTip');
@@ -10,10 +11,10 @@ export default function App() {
   return (
     <div className='page'>
       <Switch>
-        <Route path='saved-news'>
-
+        <Route path='/saved-news'>
+          <SavedNews />
         </Route>
-        <Route path='/' exact>
+        <Route path='/' >
           <Home modals={modals}/>
         </Route>
       </Switch>

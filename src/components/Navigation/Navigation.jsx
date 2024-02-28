@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 export default function Navigation({onOpen, classMod}) {
   const size = useSize();
   const [isOpen] = onOpen;
-  const isLog = Boolean(localStorage.getItem('email'));
+  const isLog = !Boolean(localStorage.getItem('email'));
   const txtBtn = isLog ? 'Fer ' : 'Iniciar sesión';
   const imgBtn = isLog ?
     <svg className={`navigation__logout-icon header__svg_route_${classMod}`}
@@ -27,8 +27,8 @@ export default function Navigation({onOpen, classMod}) {
   return <>
     {size !== 'desktop' && <HamburgerBtn onOpen={onOpen} classMod={classMod} />}
     <menu className={`navigation__menu${isOpen ? ' navigation__menu_active' : ''}`}>
-      <NavLink to='#' className='navigation__link' >Inicio</NavLink>
-      {isLog && <NavLink to='#' className='navigation__link' >Articulos guardados</NavLink>}
+      <NavLink to='/' className='navigation__link' >Inicio</NavLink>
+      {isLog && <NavLink to='/saved-news' className='navigation__link' >Articulos guardados</NavLink>}
       <button type="button" className={`navigation__button header__button_route_${classMod}`}>{txtBtn}{imgBtn}</button>
     </menu>
   </>
