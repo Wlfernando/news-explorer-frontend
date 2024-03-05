@@ -3,19 +3,18 @@
   color: #fff;
 }
 
-.modal__label {
+.modal__label, .modal__error {
   font-family: 'Inter';
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;
+}
+
+.modal__label {
   color: #2F71E5;
 }
 
 .modal__error {
-  font-family: 'Inter';
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 15px;
   color: #FF0000;
 }
 

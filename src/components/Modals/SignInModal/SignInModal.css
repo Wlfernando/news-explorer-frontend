@@ -1,7 +1,7 @@
 .modal__form_class_sign-in {
   display: grid;
-  grid-template-columns: 36px minmax(max-content, 358px) 36px;
-  grid-template-rows: 34px 32px repeat(2, 22px 14px 23px) 22px 22px 64px 16px 20px 28px;
+  grid-template-columns: 36px 358px 36px;
+  grid-template-rows: 34px 32px repeat(2, 27px 14px 23px) 27px 22px 64px 16px 20px 28px;
   justify-content: center;
 }
 

@@ -1,13 +1,17 @@
+import { useState } from 'react';
+import useForm from '../../../hooks/useForm';
 import { useModalContext } from '../../../hooks/useGlobalContext';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import './SignInModal.css';
 
 export default function SignInModal() {
-  const {signIn, openPopup, closeAllPopups} = useModalContext()
+  const [title] = useState('Iniciar sesión');
+  const {signIn, openPopup, closeAllPopups} = useModalContext();
+  const {inputs: {email, password}, handleChange} = useForm(title)
 
   return <ModalWithForm
     isOpen={signIn}
-    title={'Iniciar sesión'}
+    title={title}
     formClass={'sign-in'}
   >
     <label htmlFor='email' className='modal__label'>Correo eletrónico</label>
@@ -19,8 +23,10 @@ export default function SignInModal() {
       required
       minLength='2'
       maxLength='30'
+      value={email?.value ?? ''}
+      onChange={handleChange}
     />
-    <span className='modal__error'></span>
+    <span className='modal__error'>{email?.hasMssg ? email.validationMessage : ''}</span>
     <label htmlFor='password' className='modal__label'>Contraseña</label>
     <input
       className='modal__item'
@@ -29,8 +35,10 @@ export default function SignInModal() {
       name='password'
       required
       minLength='4'
+      value={password?.value ?? ''}
+      onChange={handleChange}
     />
-    <span className='modal__error'></span>
+    <span className='modal__error'>{password?.hasMssg ? password.validationMessage : ''}</span>
     <span className="modal__error"></span>
     <p className='modal__link modal__link_type_sign-in'>o
       <button type='button' onClick={(e)=> {e.preventDefault(); closeAllPopups(); openPopup('signUp')}}>inscríbete</button>

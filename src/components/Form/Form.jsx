@@ -3,7 +3,7 @@ import './Form.css';
 
 export default function Form({name, className, onSubmit, children, btnTxt, modBtn, onChange, validate}) {
   const [disabled, setDisabled] = useState(validate);
-
+  
   function handleSubmit(e) {
     e.preventDefault()
     onSubmit(e, ()=> setDisabled(validate))
