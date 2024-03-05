@@ -10,3 +10,7 @@
   background-color: #E6E8EB;
   color: #B6BCBF;
 }
+
+.form__loader {
+  border: 5px dotted #FFF;
+}

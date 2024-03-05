@@ -23,6 +23,10 @@
   border-radius: 30px;
 }
 
+.search-results__loader {
+  border: 5px dotted rgb(163, 163, 163);
+}
+
 @media screen and (width < 1261px) {
   .search-results__title {
     width: calc(224px * 3 + 8px * 2);

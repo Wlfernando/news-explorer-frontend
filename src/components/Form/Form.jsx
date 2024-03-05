@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import './Form.css';
+import Loader from '../Loader/Loader';
 
-export default function Form({name, className, onSubmit, children, btnTxt, modBtn, onChange, validate}) {
+export default function Form({name, className, onSubmit, children, btnTxt, modBtn, onChange, validate, isLoading}) {
   const [disabled, setDisabled] = useState(validate);
-  
+
   function handleSubmit(e) {
     e.preventDefault()
     onSubmit(e, ()=> setDisabled(validate))
@@ -26,7 +27,7 @@ export default function Form({name, className, onSubmit, children, btnTxt, modBt
     <button
       className={`form__button${modBtn ? ' form__button_type_' + modBtn : ''}`}
       disabled={disabled}
-      type="submit" >{btnTxt}
+      type="submit" >{isLoading ? <Loader className={'form__loader'}/> : btnTxt}
     </button>
   </form>
 }
