@@ -61,7 +61,7 @@ h1 {
    */
 
 hr {
-    box-sizing: content-box;
+    box-sizing: border-box;
     /* 1 */
     height: 0;
     /* 1 */

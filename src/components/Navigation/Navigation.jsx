@@ -2,11 +2,13 @@ import './Navigation.css';
 import useSize from '../../hooks/useSize';
 import HamburgerBtn from '../HamburgerBtn/HamburgerBtn';
 import { NavLink } from 'react-router-dom';
+import { useModalContext } from '../../hooks/useGlobalContext';
 
 export default function Navigation({onOpen, classMod}) {
+  const {openPopup} = useModalContext();
   const size = useSize();
   const [isOpen] = onOpen;
-  const isLog = !Boolean(localStorage.getItem('email'));
+  const isLog = Boolean(localStorage.getItem('email'));
   const txtBtn = isLog ? 'Fer ' : 'Iniciar sesión';
   const imgBtn = isLog ?
     <svg className={`navigation__logout-icon header__svg_route_${classMod}`}
@@ -24,12 +26,20 @@ export default function Navigation({onOpen, classMod}) {
     </svg> :
     undefined;
 
+  function setBehavior() {
+    if(isLog) {
+
+    } else {
+      openPopup('signIn')
+    }
+  }
+
   return <>
     {size !== 'desktop' && <HamburgerBtn onOpen={onOpen} classMod={classMod} />}
     <menu className={`navigation__menu${isOpen ? ' navigation__menu_active' : ''}`}>
       <NavLink to='/' className='navigation__link' >Inicio</NavLink>
       {isLog && <NavLink to='/saved-news' className='navigation__link' >Articulos guardados</NavLink>}
-      <button type="button" className={`navigation__button header__button_route_${classMod}`}>{txtBtn}{imgBtn}</button>
+      <button onClick={setBehavior} type="button" className={`navigation__button header__button_route_${classMod}`}>{txtBtn}{imgBtn}</button>
     </menu>
   </>
 }

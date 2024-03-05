@@ -4,3 +4,7 @@
   grid-template-rows: 34px 32px repeat(2, 22px 14px 23px) 22px 22px 64px 16px 20px 28px;
   justify-content: center;
 }
+
+.modal__link_type_sign-in {
+  grid-row: 13;
+}

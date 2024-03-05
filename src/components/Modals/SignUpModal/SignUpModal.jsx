@@ -1,9 +1,12 @@
+import { useModalContext } from '../../../hooks/useGlobalContext'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import './SignUpModal.css'
 
-export default function SignUpModal({isOpen}) {
+export default function SignUpModal() {
+  const {signUp, openPopup, closeAllPopups} = useModalContext();
+
   return <ModalWithForm
-    isOpen={isOpen}
+    isOpen={signUp}
     title={'Regístrate'}
     formClass={'sign-up'}
   >
@@ -39,5 +42,8 @@ export default function SignUpModal({isOpen}) {
     />
     <span className='modal__error'></span>
     <span className="modal__error"></span>
+    <p className='modal__link modal__link_type_sign-up'>o
+      <button type='button' onClick={()=> {closeAllPopups(); openPopup('signIn')}}>inicia sesión</button>
+    </p>
   </ModalWithForm>
 }

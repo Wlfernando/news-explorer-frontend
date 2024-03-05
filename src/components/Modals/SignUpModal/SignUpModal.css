@@ -3,3 +3,7 @@
   grid-template-columns: 36px 1fr 36px;
   grid-template-rows: 34px 32px repeat(3, 22px 14px 23px) 22px 22px 64px 16px 20px 28px;
 }
+
+.modal__link_type_sign-up {
+  grid-row: -3;
+}

@@ -30,3 +30,12 @@
 .modal__item::placeholder {
   opacity: .5;
 }
+
+.modal__link {
+  justify-self: center;
+
+  button {
+    color: #2F71E5;
+    background-color: transparent;
+  }
+}

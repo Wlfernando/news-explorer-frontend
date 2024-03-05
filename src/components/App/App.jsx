@@ -1,13 +1,10 @@
 import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min.js'
-import useModal from '../../hooks/useModal.js'
 import Footer from '../Footer/Footer.jsx'
 import './App.css'
 import Home from '../Main/Home/Home.jsx'
 import SavedNews from '../Main/SavedNews/SavedNews.jsx'
 
 export default function App() {
-  const modals = useModal('signIn', 'signUp', 'toolTip');
-
   return (
     <div className='page'>
       <Switch>
@@ -15,7 +12,7 @@ export default function App() {
           <SavedNews />
         </Route>
         <Route path='/' >
-          <Home modals={modals}/>
+          <Home />
         </Route>
       </Switch>
       <Footer />
