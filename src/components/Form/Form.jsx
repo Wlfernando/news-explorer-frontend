@@ -1,19 +1,19 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import './Form.css';
 
-export default function Form({name, className, onSubmit, children, btnTxt, modBtn, onChange}) {
-  const hasInputs = useRef(Boolean(children))
-  const [disabled, setDisabled] = useState(hasInputs.current);
+export default function Form({name, className, onSubmit, children, btnTxt, modBtn, onChange, validate}) {
+  const [disabled, setDisabled] = useState(validate);
 
   function handleSubmit(e) {
     e.preventDefault()
-    onSubmit(e, ()=> setDisabled(hasInputs.current))
+    onSubmit(e, ()=> setDisabled(validate))
   }
 
   function handleValidation(e) {
     const
       form = e.currentTarget.elements,
-      isValid = Array(...form)
+      isValid = Array
+        .from(form)
         .every(input => input.validity.valid)
 
     setDisabled(!isValid)

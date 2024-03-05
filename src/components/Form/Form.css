@@ -1,4 +1,12 @@
 .form__button {
+  transition:
+    background-color 100ms linear,
+    color 100ms linear;
   background-color: #2F71E5;
   border: none;
+}
+
+.form__button:disabled {
+  background-color: #E6E8EB;
+  color: #B6BCBF;
 }
