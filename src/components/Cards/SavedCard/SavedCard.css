@@ -6,6 +6,7 @@
   column-gap: 5px;
   margin-top: 24px;
   width: 90%;
+  overflow: hidden;
 }
 
 .saved-card__button {
@@ -17,9 +18,10 @@
   transition: background 200ms linear;
 }
 
-.saved-card__button_dynamic {
+.saved-card__button-delete {
   width: max-content;
   justify-self: end;
+  transition: translate 250ms ease-out;
 }
 
 .saved-card__button_icon_trash {
@@ -28,6 +30,10 @@
 
 .saved-card__button_icon_trash:hover {
   background-image: url(../../../images/trash-hover.svg);
+}
+
+.saved-card__button_hide {
+  translate: 0px -40px;
 }
 
 @media screen and (width < 768px) {

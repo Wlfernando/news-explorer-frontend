@@ -1,13 +1,15 @@
 import NewsCardList from '../../Cards/NewsCardList/NewsCardList'
 import SavedHeader from '../../Header/SavedHeader/SavedHeader.jsx'
 import SavedCard from '../../Cards/SavedCard/SavedCard.jsx'
+import { useFetchedNewsContext } from '../../../hooks/useGlobalContext.js'
 
 export default function SavedNews() {
-  return <main style={{width: '100%'}}>
+  const cards = useFetchedNewsContext()
+  return <main style={{width: '100%', display: 'flex', flexDirection: 'column', flexGrow: 1}}>
     <SavedHeader />
-    <div style={{width: '100%', padding: '32px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#F5F6F7'}}>
+    <div style={{width: '100%', padding: '32px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#F5F6F7', flexGrow: 1}}>
       <NewsCardList>
-        {Array(5).fill(<SavedCard />)}
+        {cards.map(card => <SavedCard key={card.title} {...card}/>)}
       </NewsCardList>
     </div>
   </main>

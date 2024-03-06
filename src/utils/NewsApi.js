@@ -21,10 +21,9 @@ export function getNews({q, page = 1}) {
   if (q) {
     const from = new Date(Date.now() - sixDays).toISOString().slice(0, -5)
     const today = new Date().toISOString().slice(0, -5)
-    searchParams = `q=${q.replaceAll(' ', '_')}&from=${from}&to=${today}&pageSize=3&language=es&`
+    searchParams = `q=${q.replaceAll(' ', '+')}&from=${from}&to=${today}&pageSize=3&language=es&`
   }
 
   return fetch(BASE_URL + searchParams + 'page=' + page, {headers})
     .then(confirm)
-    .then(({ articles }) => articles)
 }
