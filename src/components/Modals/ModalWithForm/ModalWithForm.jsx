@@ -8,6 +8,7 @@ export default function ModalWithForm({
   children,
   formClass,
   isLoading,
+  onSubmit,
 }) {
   return <Modal isOpen={isOpen}>
     <Form
@@ -16,6 +17,7 @@ export default function ModalWithForm({
       name={title}
       validate
       isLoading={isLoading}
+      onSubmit={onSubmit}
     >
       <h3 className="modal__title">{title}</h3>
       {children}

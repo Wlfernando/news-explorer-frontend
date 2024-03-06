@@ -2,14 +2,16 @@ import './Navigation.css';
 import useSize from '../../hooks/useSize';
 import HamburgerBtn from '../HamburgerBtn/HamburgerBtn';
 import { NavLink } from 'react-router-dom';
-import { useModalContext } from '../../hooks/useGlobalContext';
+import { useModalContext, useUserContext } from '../../hooks/useGlobalContext';
 
 export default function Navigation({onOpen, classMod}) {
-  const {openPopup} = useModalContext();
+  const {openPopup, setUser} = useModalContext();
   const size = useSize();
+  const {email} = useUserContext()
+
   const [isOpen] = onOpen;
-  const isLog = Boolean(localStorage.getItem('email'));
-  const txtBtn = isLog ? 'Fer ' : 'Iniciar sesión';
+  const isLog = Boolean(email);
+  const txtBtn = isLog ? `${email.split('@')[0]} ` : 'Iniciar sesión';
   const imgBtn = isLog ?
     <svg className={`navigation__logout-icon header__svg_route_${classMod}`}
       width="18"
@@ -28,7 +30,7 @@ export default function Navigation({onOpen, classMod}) {
 
   function setBehavior() {
     if(isLog) {
-
+      setUser({})
     } else {
       openPopup('signIn')
     }

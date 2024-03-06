@@ -7,15 +7,15 @@ const ModalContext = createContext({})
 const UserContext = createContext({})
 const UpdatedContext = createContext({})
 const FetchedNewsContext = createContext([])
-console.log(cards)
+
 export const GlobalContextProvider = ({children}) => {
   const [{signIn, signUp, infoTooltip}, openPopup, closeAllPopups] = useModal('signIn', 'signUp', 'infoToolTip');
-  const [user] = useState({});
+  const [user, setUser] = useState({});
   const [news, setNews] = useState(JSON.parse(cards));
 
   function update() {
     function handleSearch(q) {
-      if(news.length)  setNews([])
+      if(news.length) setNews([])
 
       return getNews({q})
         .then(setNews)
@@ -29,13 +29,19 @@ export const GlobalContextProvider = ({children}) => {
         })
     }
 
+    function sign(user) {
+      setUser(user)
+      closeAllPopups()
+    }
+
     return {
       handleSearch,
-      handlePage
+      handlePage,
+      sign,
     }
   }
 
-  return <ModalContext.Provider value={{signIn, signUp, infoTooltip, openPopup, closeAllPopups}}>
+  return <ModalContext.Provider value={{signIn, signUp, infoTooltip, openPopup, closeAllPopups, setUser}}>
     <UserContext.Provider value={user}>
       <UpdatedContext.Provider value={update}>
         <FetchedNewsContext.Provider value={news}>

@@ -1,18 +1,25 @@
 import { useState } from 'react';
 import useForm from '../../../hooks/useForm';
-import { useModalContext } from '../../../hooks/useGlobalContext';
+import { useModalContext, useUpdatedContext } from '../../../hooks/useGlobalContext';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import './SignInModal.css';
 
 export default function SignInModal() {
   const [title] = useState('Iniciar sesión');
   const {signIn, openPopup, closeAllPopups} = useModalContext();
-  const {inputs: {email, password}, handleChange} = useForm(title)
+  const {inputs: {email, password}, handleChange, getValues} = useForm(title)
+  const update = useUpdatedContext()
+
+  function submit() {
+    update()
+      .sign(getValues())
+  }
 
   return <ModalWithForm
     isOpen={signIn}
     title={title}
     formClass={'sign-in'}
+    onSubmit={submit}
   >
     <label htmlFor='email' className='modal__label'>Correo eletrónico</label>
     <input
