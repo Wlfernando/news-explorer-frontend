@@ -10,7 +10,8 @@ export default function ModalWithForm({
   isLoading,
   onSubmit,
 }) {
-  return <Modal isOpen={isOpen}>
+  return (
+  <Modal isOpen={isOpen}>
     <Form
       className={`modal__content modal__form_class_${formClass}`} modBtn={'modal'}
       btnTxt={title}
@@ -23,4 +24,5 @@ export default function ModalWithForm({
       {children}
     </Form>
   </Modal>
+  )
 }

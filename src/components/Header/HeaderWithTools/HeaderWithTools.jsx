@@ -9,10 +9,12 @@ export default function HeaderWithTools({
   const hamburgerBtnState = useState(false);
   const [isOpen] = hamburgerBtnState;
 
-  return <header className={`header header_route_${classMod} ${isOpen ?" header_shadow" : ""}`}>
+  return (
+  <header className={`header header_route_${classMod} ${isOpen ?" header_shadow" : ""}`}>
     <h1 className={`header__title${isOpen ? ' header__title_open' : ''}`}>NewsExplorer</h1>
     <Navigation onOpen={hamburgerBtnState} classMod={classMod} />
     <hr className='header__line' />
     {children}
   </header>
+  )
 }

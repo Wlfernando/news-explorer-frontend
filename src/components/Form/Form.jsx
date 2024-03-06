@@ -22,7 +22,8 @@ export default function Form({name, className, onSubmit, children, btnTxt, modBt
     if(onChange && typeof onChange === 'function') onChange(e)
   }
 
-  return <form className={className} name={name} noValidate onSubmit={handleSubmit} onChange={handleValidation}>
+  return (
+  <form className={className} name={name} noValidate onSubmit={handleSubmit} onChange={handleValidation}>
     {children}
     <button
       className={`form__button${modBtn ? ' form__button_type_' + modBtn : ''}`}
@@ -30,4 +31,5 @@ export default function Form({name, className, onSubmit, children, btnTxt, modBt
       type="submit" >{isLoading ? <Loader className={'form__loader'}/> : btnTxt}
     </button>
   </form>
+  )
 }

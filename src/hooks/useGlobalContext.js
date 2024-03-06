@@ -16,13 +16,17 @@ export const GlobalContextProvider = ({children}) => {
   const [total, setTotal] = useState(0)
 
   function update() {
-    function handleSearch(q) {
+    function handleSearch(query) {
       if(news.length) setNews([])
 
-      return getNews({q})
-        .then((res) => {
-          setTotal(res.totalResults)
-          setNews(res.articles)
+      return getNews({q: query})
+        .then(({totalResults, articles}) => {
+          if (!totalResults) {
+            return Promise.reject('No hay resultados')
+          }
+
+          setTotal(totalResults)
+          setNews(articles)
         })
     }
 

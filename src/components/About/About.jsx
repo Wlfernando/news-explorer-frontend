@@ -2,7 +2,8 @@ import './About.css'
 import author from '../../images/author-photo.jpg'
 
 export default function About() {
-  return <section className='about'>
+  return (
+  <section className='about'>
     <img src={author} alt="foto del autor" className="about__image" />
     <div className="about__brief">
       <h2 className="about__title">Acerca del autor</h2>
@@ -14,4 +15,5 @@ export default function About() {
       <p className="about__text">Además como prácticas, desarrollo en No Country en un equipo para adquirir habilidades blandas y poder sacar en un sprint un MVP.</p>
     </div>
   </section>
+  )
 }

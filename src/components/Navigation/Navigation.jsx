@@ -36,7 +36,8 @@ export default function Navigation({onOpen, classMod}) {
     }
   }
 
-  return <>
+  return (
+  <>
     {size !== 'desktop' && <HamburgerBtn onOpen={onOpen} classMod={classMod} />}
     <menu className={`navigation__menu${isOpen ? ' navigation__menu_active' : ''}`}>
       <NavLink to='/' className='navigation__link' >Inicio</NavLink>
@@ -44,4 +45,5 @@ export default function Navigation({onOpen, classMod}) {
       <button onClick={setBehavior} type="button" className={`navigation__button header__button_route_${classMod}`}>{txtBtn}{imgBtn}</button>
     </menu>
   </>
+  )
 }

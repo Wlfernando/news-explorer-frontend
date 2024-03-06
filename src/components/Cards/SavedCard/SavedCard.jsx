@@ -16,11 +16,13 @@ export default function SavedCard(props) {
       .remove(props.title)
   }
 
-  return <NewsCard {...props}>
+  return (
+  <NewsCard {...props}>
     <menu className='saved-card__menu'>
       <button type='button' className='saved-card__button'>Naturaleza</button>
       <button onClick={clickRemove} inert={clicked ? undefined : 'true'} type="button" className={`saved-card__button saved-card__button-delete${clicked ? '' : ` saved-card__button_hide`}`}>Borrar</button>
       <button onClick={clickTrash} type="button" className='saved-card__button saved-card__button_icon_trash' />
     </menu>
   </NewsCard>
+  )
 }

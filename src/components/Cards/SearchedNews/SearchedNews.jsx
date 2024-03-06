@@ -18,7 +18,8 @@ export default function SearchedNews(props) {
     }
   }
 
-  return <NewsCard {...props}>
+  return (
+  <NewsCard {...props}>
     <menu className="searched-news__menu">
       <button
         type="button"
@@ -34,4 +35,5 @@ export default function SearchedNews(props) {
       />
     </menu>
   </NewsCard>
+  )
 }

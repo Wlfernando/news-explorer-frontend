@@ -15,7 +15,8 @@ export default function SignInModal() {
       .sign(getValues())
   }
 
-  return <ModalWithForm
+  return (
+  <ModalWithForm
     isOpen={signIn}
     title={title}
     formClass={'sign-in'}
@@ -51,4 +52,5 @@ export default function SignInModal() {
       <button type='button' onClick={(e)=> {e.preventDefault(); closeAllPopups(); openPopup('signUp')}}>inscríbete</button>
     </p>
   </ModalWithForm>
+  )
 }

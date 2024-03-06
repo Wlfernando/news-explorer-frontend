@@ -24,7 +24,8 @@ export default function SearchRsults({
       })
   }
 
-  return <section className='search-results'>
+  return (
+  <section className='search-results'>
     <h2 className="search-results__title">Resultados de la Búsqueda</h2>
     <NewsCardList>
       {news.map((n) => <SearchedNews key={n.title} {...n}/>)}
@@ -33,4 +34,5 @@ export default function SearchRsults({
       {loading ? <Loader className={'search-results__loader'}/> : 'Ver más'}
     </button>}
   </section>
+  )
 }

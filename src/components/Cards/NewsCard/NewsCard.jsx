@@ -14,7 +14,8 @@ export default function NewsCard({
     day: 'numeric'
   }).format(new Date(publishedAt))
 
-  return <li className='news-card'>
+  return (
+  <li className='news-card'>
     <figure className='news-card__figure'>
       <img src={urlToImage} alt="" className="news-card__image" />
       {children}
@@ -24,4 +25,5 @@ export default function NewsCard({
     <p className="news-card__text">{description}</p>
     <cite className="news-card__cite">{name}</cite>
   </li>
+  )
 }

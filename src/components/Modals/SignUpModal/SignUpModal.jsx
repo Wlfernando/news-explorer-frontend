@@ -9,7 +9,8 @@ export default function SignUpModal() {
   const [title] = useState('Regístrate');
   const {inputs: {email, password, name}, handleChange} = useForm(title);
 
-  return <ModalWithForm
+  return (
+  <ModalWithForm
     isOpen={signUp}
     title={title}
     formClass={'sign-up'}
@@ -56,4 +57,5 @@ export default function SignUpModal() {
       <button type='button' onClick={()=> {closeAllPopups(); openPopup('signIn')}}>inicia sesión</button>
     </p>
   </ModalWithForm>
+  )
 }

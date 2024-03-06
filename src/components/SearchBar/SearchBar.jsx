@@ -32,7 +32,8 @@ export default function SearchBar() {
     setInput(e.target.value)
   }
 
-  return <Form
+  return (
+  <Form
     name="buscar"
     btnTxt="Buscar"
     className="form"
@@ -48,4 +49,5 @@ export default function SearchBar() {
       value={input}
     />
   </Form>
+  )
 }
