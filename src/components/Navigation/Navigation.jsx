@@ -27,6 +27,7 @@ export default function Navigation({onOpen, classMod}) {
       />
     </svg> :
     undefined;
+  const small = size !== 'desktop';
 
   function setBehavior() {
     if(isLog) {
@@ -38,8 +39,8 @@ export default function Navigation({onOpen, classMod}) {
 
   return (
   <>
-    {size !== 'desktop' && <HamburgerBtn onOpen={onOpen} classMod={classMod} />}
-    <menu className={`navigation__menu${isOpen ? ' navigation__menu_active' : ''}`}>
+    {small && <HamburgerBtn onOpen={onOpen} classMod={classMod} />}
+    <menu className={`navigation__menu${isOpen ? ' navigation__menu_active' : ''}`} inert={small && !isOpen ? 'true' : undefined}>
       <NavLink to='/' className='navigation__link' >Inicio</NavLink>
       {isLog && <NavLink to='/saved-news' className='navigation__link' >Articulos guardados</NavLink>}
       <button onClick={setBehavior} type="button" className={`navigation__button header__button_route_${classMod}`}>{txtBtn}{imgBtn}</button>

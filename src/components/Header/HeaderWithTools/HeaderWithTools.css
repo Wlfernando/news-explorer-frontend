@@ -23,6 +23,8 @@
 @media screen and (width < 768px) {
   .header {
     grid-template-rows: 56px;
+    transition: box-shadow 100ms linear;
+    box-shadow: inset 0 56px #1a1b2200;
   }
 
   .header__title {
