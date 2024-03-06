@@ -5,6 +5,7 @@
   column-gap: 5px;
   margin-top: 24px;
   width: 90%;
+  overflow: hidden;
 }
 
 .searched-news__button {
@@ -18,20 +19,25 @@
   transition: background 200ms linear;
 }
 
-.searched-news__button_dynamic {
+.searched-news__button_hide {
+  translate: 0px -40px;
+}
+
+.searched-news__button-sign-in {
   width: max-content;
+  transition: translate 250ms ease-out;
 }
 
 .searched-news__button_icon_fav {
-  background-image: url(../../images/favorite.svg);
+  background-image: url(../../../images/favorite.svg);
 }
 
 .searched-news__button_icon_non-fav {
-  background-image: url(../../images/non-favorite.svg);
+  background-image: url(../../../images/non-favorite.svg);
 }
 
 .searched-news__button_icon_non-fav:hover {
-  background-image: url(../../images/non-favorite-hover.svg);
+  background-image: url(../../../images/non-favorite-hover.svg);
 }
 
 @media screen and (width < 768px) {

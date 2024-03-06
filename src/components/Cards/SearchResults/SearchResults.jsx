@@ -1,5 +1,5 @@
 import NewsCardList from '../NewsCardList/NewsCardList.jsx';
-import SearchedNews from '../../SearchedNews/SearchedNews.jsx';
+import SearchedNews from '../SearchedNews/SearchedNews.jsx';
 import './SearchResults.css';
 import Loader from '../../Loader/Loader.jsx';
 import { useState } from 'react';
