@@ -1,7 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import useModal from "./useModal";
 import { getNews } from '../utils/NewsApi.js'
-import {cards} from '../utils/info.js'
 
 const ModalContext = createContext({})
 const UserContext = createContext({})
@@ -10,14 +9,17 @@ const FetchedNewsContext = createContext([])
 const TotalPagesContext = createContext({})
 
 export const GlobalContextProvider = ({children}) => {
-  const [{signIn, signUp, infoTooltip}, openPopup, closeAllPopups] = useModal('signIn', 'signUp', 'infoToolTip');
-  const [user, setUser] = useState({});
-  const [news, setNews] = useState(JSON.parse(cards));
-  const [total, setTotal] = useState(0)
+  const
+    [{signIn, signUp, infoTooltip}, openPopup, closeAllPopups] = useModal('signIn', 'signUp', 'infoToolTip'),
+    [user, setUser] = useState({}),
+    [news, setNews] = useState({}),
+    [total, setTotal] = useState(0),
+    [, setTag] = useState('');
 
   function update() {
     function handleSearch(query) {
       if(news.length) setNews([])
+      setTag(query)
 
       return getNews({q: query})
         .then(({totalResults, articles}) => {
