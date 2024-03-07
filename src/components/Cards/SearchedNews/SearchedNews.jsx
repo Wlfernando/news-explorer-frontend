@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useModalContext, useUserContext } from '../../../hooks/useGlobalContext.js'
-import NewsCard from '../NewsCard/NewsCard.jsx'
+import CardWithMenu from '../CardWithMenu/CardWithMenu.jsx'
 import './SearchedNews.css'
 
 export default function SearchedNews(props) {
@@ -19,7 +19,7 @@ export default function SearchedNews(props) {
   }
 
   return (
-  <NewsCard {...props}>
+  <CardWithMenu {...props}>
     <menu className="searched-news__menu">
       <button
         type="button"
@@ -34,6 +34,6 @@ export default function SearchedNews(props) {
         onClick={click}
       />
     </menu>
-  </NewsCard>
+  </CardWithMenu>
   )
 }

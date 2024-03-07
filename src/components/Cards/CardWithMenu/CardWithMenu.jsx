@@ -1,4 +1,4 @@
-import './NewsCard.css';
+import './CardWithMenu.css';
 
 export default function NewsCard({
   children,

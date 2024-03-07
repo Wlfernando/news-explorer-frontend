@@ -12,7 +12,7 @@ export const GlobalContextProvider = ({children}) => {
   const
     [{signIn, signUp, infoTooltip}, openPopup, closeAllPopups] = useModal('signIn', 'signUp', 'infoToolTip'),
     [user, setUser] = useState({}),
-    [news, setNews] = useState({}),
+    [news, setNews] = useState([]),
     [total, setTotal] = useState(0),
     [, setTag] = useState('');
 
