@@ -7,6 +7,7 @@ export default function NewsCard({
   title,
   publishedAt,
   description,
+  url,
 }) {
   const formatDate = new Intl.DateTimeFormat('es-MX', {
     year: 'numeric',
@@ -23,7 +24,7 @@ export default function NewsCard({
     <p className="news-card__date">{formatDate}</p>
     <h3 className="news-card__title">{title}</h3>
     <p className="news-card__text">{description}</p>
-    <cite className="news-card__cite">{name}</cite>
+    <a href={url} className="news-card__cite">{name}</a>
   </li>
   )
 }
