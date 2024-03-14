@@ -7,17 +7,17 @@ export default function SearchedNews(props) {
   const user = useUserContext()
   const {openPopup} = useModalContext()
   const [hasLogged, setHasLogged] = useState(true)
-  const [saved, setSaved] = useState(false)
+  const [id, setId] = useState(undefined)
 
   function click() {
     if (!Boolean(user.email)) {
       setHasLogged(false)
     } else {
       setHasLogged(true)
-      setSaved(true)
+      setId(true)
     }
   }
-
+console.log(props)
   return (
   <CardWithMenu {...props}>
     <menu className="searched-news__menu">
@@ -30,7 +30,7 @@ export default function SearchedNews(props) {
       </button>
       <button
         type="button"
-        className={`searched-news__button ${saved ? 'searched-news__button_icon_fav' : 'searched-news__button_icon_non-fav'}`}
+        className={`searched-news__button ${id ? 'searched-news__button_icon_fav' : 'searched-news__button_icon_non-fav'}`}
         onClick={click}
       />
     </menu>

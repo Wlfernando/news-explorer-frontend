@@ -1,6 +1,8 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import useModal from "./useModal";
 import { getNews } from '../utils/NewsApi.js'
+import { signin, signup } from "../utils/auth.js";
+import { getUser } from "../utils/MainApi.js";
 
 const ModalContext = createContext({})
 const UserContext = createContext({})
@@ -10,11 +12,19 @@ const TotalPagesContext = createContext({})
 
 export const GlobalContextProvider = ({children}) => {
   const
-    [{signIn, signUp, infoTooltip}, openPopup, closeAllPopups] = useModal('signIn', 'signUp', 'infoToolTip'),
+    [{signIn, signUp, infoToolTip}, openPopup, closeAllPopups] = useModal('signIn', 'signUp', 'infoToolTip'),
     [user, setUser] = useState({}),
     [news, setNews] = useState([]),
     [total, setTotal] = useState(0),
     [, setTag] = useState('');
+
+  useEffect(() => {
+    if (Boolean(localStorage.getItem('token'))) {
+      getUser()
+        .then(setUser)
+        .catch(console.error)
+    }
+  }, [])
 
   function update() {
     function handleSearch(query) {
@@ -32,16 +42,27 @@ export const GlobalContextProvider = ({children}) => {
         })
     }
 
-    function handlePage(page) {
+    function passPage(page) {
       return getNews({page})
         .then((res) => {
           setNews((prev) => [...prev, ...res.articles])
         })
     }
 
-    function sign(user) {
-      setUser(user)
-      closeAllPopups()
+    function register(form) {
+      return signup(form)
+        .then(() => {
+          closeAllPopups();
+          openPopup('infoToolTip');
+        })
+    }
+
+    function access(form) {
+      return signin(form)
+        .then(setUser)
+        .then(() => {
+          closeAllPopups();
+        })
     }
 
     function remove(title) {
@@ -50,15 +71,22 @@ export const GlobalContextProvider = ({children}) => {
       })
     }
 
+    function exit() {
+      setUser({})
+      localStorage.removeItem('token')
+    }
+
     return {
       handleSearch,
-      handlePage,
-      sign,
+      passPage,
+      register,
+      access,
       remove,
+      exit,
     }
   }
 
-  return <ModalContext.Provider value={{signIn, signUp, infoTooltip, openPopup, closeAllPopups, setUser}}>
+  return <ModalContext.Provider value={{signIn, signUp, infoToolTip, openPopup, closeAllPopups}}>
     <UserContext.Provider value={user}>
       <UpdatedContext.Provider value={update}>
         <FetchedNewsContext.Provider value={news}>

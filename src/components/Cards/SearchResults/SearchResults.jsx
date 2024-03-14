@@ -17,7 +17,7 @@ export default function SearchRsults({
     setLoading(true)
 
     update()
-      .handlePage(page)
+      .passPage(page)
       .finally(() => {
         setLoading(false)
         setPage(page + 1)

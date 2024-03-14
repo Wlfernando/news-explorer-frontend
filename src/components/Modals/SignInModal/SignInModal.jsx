@@ -9,10 +9,14 @@ export default function SignInModal() {
   const {signIn, openPopup, closeAllPopups} = useModalContext();
   const {inputs: {email, password}, handleChange, getValues} = useForm(title)
   const update = useUpdatedContext()
+  const [error, setError] = useState(undefined)
 
   function submit() {
+    setError(undefined)
+    
     update()
-      .sign(getValues())
+      .access(getValues())
+      .catch(setError)
   }
 
   return (
@@ -47,7 +51,7 @@ export default function SignInModal() {
       onChange={handleChange}
     />
     <span className='modal__error'>{password?.hasMssg ? password.validationMessage : ''}</span>
-    <span className="modal__error"></span>
+    <span className="modal__error">{error}</span>
     <p className='modal__link modal__link_type_sign-in'>o
       <button type='button' onClick={(e)=> {e.preventDefault(); closeAllPopups(); openPopup('signUp')}}>inscríbete</button>
     </p>

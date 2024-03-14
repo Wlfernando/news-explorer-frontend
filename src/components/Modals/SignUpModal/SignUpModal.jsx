@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useModalContext } from '../../../hooks/useGlobalContext'
+import { useModalContext, useUpdatedContext } from '../../../hooks/useGlobalContext'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import './SignUpModal.css'
 import useForm from '../../../hooks/useForm';
@@ -7,13 +7,24 @@ import useForm from '../../../hooks/useForm';
 export default function SignUpModal() {
   const {signUp, openPopup, closeAllPopups} = useModalContext();
   const [title] = useState('Regístrate');
-  const {inputs: {email, password, name}, handleChange} = useForm(title);
+  const {inputs: {email, password, name}, handleChange, getValues} = useForm(title);
+  const update = useUpdatedContext();
+  const [error, setError] = useState(undefined)
+
+  function submit() {
+    setError(undefined)
+
+    update()
+      .register(getValues())
+      .catch(setError)
+  }
 
   return (
   <ModalWithForm
     isOpen={signUp}
     title={title}
     formClass={'sign-up'}
+    onSubmit={submit}
   >
     <label htmlFor='email' className='modal__label'>Correo eletrónico</label>
     <input
@@ -52,7 +63,7 @@ export default function SignUpModal() {
       onChange={handleChange}
     />
     <span className='modal__error'>{name?.hasMssg ? name.validationMessage : ''}</span>
-    <span className="modal__error"></span>
+    <span className="modal__error">{error}</span>
     <p className='modal__link modal__link_type_sign-up'>o
       <button type='button' onClick={()=> {closeAllPopups(); openPopup('signIn')}}>inicia sesión</button>
     </p>
