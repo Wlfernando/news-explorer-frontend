@@ -1,8 +1,14 @@
 const BASE_URL = 'http://localhost:3001'
 
-function setHeaders() {
+function getAuthorization() {
   return {
     "Authorization": `Bearer ${localStorage.getItem('token')}`,
+  }
+}
+
+function setHeaders() {
+  return {
+    ...getAuthorization(),
     "Content-Type": "application/json"
   }
 }
@@ -39,4 +45,20 @@ export function getUser() {
     headers: setHeaders(),
   })
   .then(confirm);
+};
+
+export function postNotice(body) {
+  return fetch(BASE_URL + '/articles', {
+    method: 'POST',
+    headers: setHeaders(),
+    body: JSON.stringify(body),
+  })
+  .then(confirm)
+};
+
+export function deleteNotice(id) {
+  return fetch(BASE_URL + '/articles/' + id, {
+    method: "DELETE",
+    headers: getAuthorization(),
+  })
 };

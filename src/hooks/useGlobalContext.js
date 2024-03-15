@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import useModal from "./useModal";
 import { getNews } from '../utils/NewsApi.js'
 import { signin, signup } from "../utils/auth.js";
-import { getUser } from "../utils/MainApi.js";
+import { deleteNotice, getUser, postNotice } from "../utils/MainApi.js";
 
 const ModalContext = createContext({})
 const UserContext = createContext({})
@@ -16,7 +16,7 @@ export const GlobalContextProvider = ({children}) => {
     [user, setUser] = useState({}),
     [news, setNews] = useState([]),
     [total, setTotal] = useState(0),
-    [, setTag] = useState('');
+    [keyWord, setKeyWord] = useState('');
 
   useEffect(() => {
     if (Boolean(localStorage.getItem('token'))) {
@@ -29,7 +29,7 @@ export const GlobalContextProvider = ({children}) => {
   function update() {
     function handleSearch(query) {
       if(news.length) setNews([])
-      setTag(query)
+      setKeyWord(query)
 
       return getNews({q: query})
         .then(({totalResults, articles}) => {
@@ -76,6 +76,17 @@ export const GlobalContextProvider = ({children}) => {
       localStorage.removeItem('token')
     }
 
+    function addNotice(form) {
+      form.keyWord = keyWord
+
+      return postNotice(form)
+        .then(({_id}) => _id)
+    }
+
+    function removeNotice(id) {
+      return deleteNotice(id)
+    }
+
     return {
       handleSearch,
       passPage,
@@ -83,6 +94,8 @@ export const GlobalContextProvider = ({children}) => {
       access,
       remove,
       exit,
+      addNotice,
+      removeNotice,
     }
   }
 

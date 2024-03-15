@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useModalContext, useUserContext } from '../../../hooks/useGlobalContext.js'
+import { useModalContext, useUpdatedContext, useUserContext } from '../../../hooks/useGlobalContext.js'
 import CardWithMenu from '../CardWithMenu/CardWithMenu.jsx'
 import './SearchedNews.css'
 
@@ -8,16 +8,34 @@ export default function SearchedNews(props) {
   const {openPopup} = useModalContext()
   const [hasLogged, setHasLogged] = useState(true)
   const [id, setId] = useState(undefined)
+  const update = useUpdatedContext()
+  const hasId = Boolean(id)
 
   function click() {
     if (!Boolean(user.email)) {
       setHasLogged(false)
-    } else {
+    } else if (!hasId) {
       setHasLogged(true)
-      setId(true)
+
+      update()
+        .addNotice({
+          title: props.title,
+          text: props.description,
+          date: props.publishedAt,
+          urlToImage: props.urlToImage,
+          url: props.url,
+        })
+        .then(setId)
+
+    } else {
+      update()
+        .removeNotice(id)
+        .then(() => {
+          setId(undefined)
+        })
     }
   }
-console.log(props)
+
   return (
   <CardWithMenu {...props}>
     <menu className="searched-news__menu">
@@ -30,7 +48,7 @@ console.log(props)
       </button>
       <button
         type="button"
-        className={`searched-news__button ${id ? 'searched-news__button_icon_fav' : 'searched-news__button_icon_non-fav'}`}
+        className={`searched-news__button ${hasId ? 'searched-news__button_icon_fav' : 'searched-news__button_icon_non-fav'}`}
         onClick={click}
       />
     </menu>
