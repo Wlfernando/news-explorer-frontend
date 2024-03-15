@@ -5,15 +5,16 @@ import Home from '../Main/Home/Home.jsx'
 import SavedNews from '../Main/SavedNews/SavedNews.jsx'
 import SavedHeader from '../Header/SavedHeader/SavedHeader.jsx'
 import HomeHeader from '../Header/HomeHeader/HomeHeader.jsx'
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.jsx'
 
 export default function App() {
   return (
     <div className='page'>
       <Switch>
-        <Route path='/saved-news'>
+        <ProtectedRoute path='/saved-news'>
           <SavedHeader />
           <SavedNews />
-        </Route>
+        </ProtectedRoute>
         <Route path='/' >
           <HomeHeader />
           <Home />

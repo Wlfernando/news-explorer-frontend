@@ -83,6 +83,7 @@ export const GlobalContextProvider = ({children}) => {
             return prev.filter(item => id !== item._id)
           })
         })
+        .catch(console.error)
     }
 
     function exit() {
