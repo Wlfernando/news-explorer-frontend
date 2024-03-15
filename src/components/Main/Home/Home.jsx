@@ -6,7 +6,7 @@ import InfoToolTip from "../../Modals/InfoToolTip/InfoToolTip.jsx";
 import { useFetchedNewsContext } from "../../../hooks/useGlobalContext.js";
 
 export default function Home() {
-  const news = useFetchedNewsContext()
+  const { news } = useFetchedNewsContext()
 
   return <main>
     {Boolean(news.length) && <SearchRsults news={news} />}

@@ -61,4 +61,12 @@ export function deleteNotice(id) {
     method: "DELETE",
     headers: getAuthorization(),
   })
+  .then(confirm)
 };
+
+export function getNotices() {
+  return fetch(BASE_URL + '/articles', {
+    headers: getAuthorization(),
+  })
+  .then(confirm)
+}

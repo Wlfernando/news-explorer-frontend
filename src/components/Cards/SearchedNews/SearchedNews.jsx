@@ -24,6 +24,7 @@ export default function SearchedNews(props) {
           date: props.publishedAt,
           urlToImage: props.urlToImage,
           url: props.url,
+          source: props.source.name
         })
         .then(setId)
 
