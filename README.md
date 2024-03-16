@@ -6,6 +6,7 @@
 * Figma
 * Componentes
 * Hooks
+* Utils
 
 ## Introducción
 
@@ -72,3 +73,15 @@ Se utiliza el nombre del formulario para recuperar los inputs del mismo y asi ma
 ### useGlobalContext
 
 Maneja todos los estados que se ocupan en la app. Se manejan todos los provider en este lugar y es utilizado en el archivo index.js para envolver la aplicación completa.
+
+### useModal
+
+Los argumentos son los nombres de los modales. Retorna un array donde su primer valor es un objeto con los nombres de los modales bajo su responsabilidad y sus valores son booleanos. El segundo valor del array es una funcion para abrir un modal dependiendo del argumento que corresponda con los nombres indicados en su inicialización del useModal. El tercer y ultimo elemento del array es una función para cerrar todos los modales.
+
+### useSize
+
+Responsable de cambiar los elmentos dependiendo del tamaño de la ventana.
+
+## Utils
+
+Aqui se encuentran los archivos de autorización, constantes, los requerimientos a las apis, etc.
