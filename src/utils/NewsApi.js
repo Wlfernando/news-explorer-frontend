@@ -1,7 +1,7 @@
 import { sixDays } from "./const"
 const BASE_URL = 'https://newsapi.org/v2/everything?'
 const headers = {
-  'Authorization': process.env.REACT_APP_NEWS_API_KEY,
+  'Authorization': '8797cfa321a4472ebc1dcaf4f1c53a9d',
 }
 const status = {
   '400': 'Petición equivocada',
