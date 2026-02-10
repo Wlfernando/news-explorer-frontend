@@ -24,7 +24,27 @@ Componente llamado HeaderWithTools para poder modificar su contenido cuando sea 
 
 ### Cards
 
-Se utilizó un componente con el nombre CardWithMenu para personalizar los botones y la lógica que estos mismos emplearían.
+El componente Card guarda en un estado la llamada a la instancia Intl dentro de una función para que solo se ejecute una única vez pese a los renderizados. Aunque la función no tarda en ejecutarse, se adoptó este patrón de "memoización" como futura referencia del hook al iniciar un estado con una función como argumento.
+
+```javascript
+const [formatedDate] = useState(() => new Intl.DateTimeFormat('es-MX', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(new Date(publishedAt)))
+```
+
+Para ajustar las lineas del título y párrafo a máximo 3 y 4 respectivamente, se empleó este [estandar](https://css-tricks.com/line-clampin/):
+
+```css
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+}
+```
+
+Para extender las capacidades de Card, se envolvió con HOCs nombrándolos con el uso de la convención "with". Por lo tanto, ahora las cartas tienen la capacidad de ser guardadas en el servidor propio o ser eliminadas de este mismo.
 
 ### Form
 
