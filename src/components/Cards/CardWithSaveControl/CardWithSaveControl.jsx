@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useModalContext, useUpdatedContext, useUserContext } from '../../../hooks/useGlobalContext.js'
 import Card from '../Card/Card.jsx'
-import './SearchedNews.css'
+import './CardWithSaveControl.css'
 
-export default function SearchedNews(props) {
+export default function CardWithSaveControl(props) {
   const user = useUserContext()
   const {openPopup} = useModalContext()
   const [hasLogged, setHasLogged] = useState(true)

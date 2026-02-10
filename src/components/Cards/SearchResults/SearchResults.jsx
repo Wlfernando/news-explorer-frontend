@@ -1,5 +1,5 @@
 import NewsCardList from '../NewsCardList/NewsCardList.jsx';
-import SearchedNews from '../SearchedNews/SearchedNews.jsx';
+import CardWithSaveControl from '../CardWithSaveControl/CardWithSaveControl.jsx';
 import './SearchResults.css';
 import Loader from '../../Loader/Loader.jsx';
 import { useState } from 'react';
@@ -28,7 +28,7 @@ export default function SearchRsults({
   <section className='search-results'>
     <h2 className="search-results__title">Resultados de la Búsqueda</h2>
     <NewsCardList>
-      {news.map((n) => <SearchedNews key={n.title} {...n}/>)}
+      {news.map((n) => <CardWithSaveControl key={n.title} {...n}/>)}
     </NewsCardList>
     {news.length < total && <button type="button" className='search-results__button' onClick={click}>
       {loading ? <Loader className={'search-results__loader'}/> : 'Ver más'}
