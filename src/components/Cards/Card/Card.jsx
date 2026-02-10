@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import './CardWithMenu.css';
+import './Card.css';
 
-export default function NewsCard({
+export default function Card({
   children,
   urlToImage,
   source: {name},

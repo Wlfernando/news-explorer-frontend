@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import CardWithMenu from '../CardWithMenu/CardWithMenu.jsx'
+import Card from '../Card/Card.jsx'
 import './SavedCard.css'
 import { useUpdatedContext } from '../../../hooks/useGlobalContext.js';
 
@@ -23,12 +23,12 @@ export default function SavedCard(props) {
   }
 
   return (
-  <CardWithMenu {...format}>
+  <Card {...format}>
     <menu className='saved-card__menu'>
       <button type='button' className='saved-card__button'>{props.keyWord}</button>
       <button onClick={clickRemove} inert={clicked ? undefined : 'true'} type="button" className={`saved-card__button saved-card__button-delete${clicked ? '' : ` saved-card__button_hide`}`}>Borrar</button>
       <button onClick={clickTrash} type="button" className='saved-card__button saved-card__button_icon_trash' />
     </menu>
-  </CardWithMenu>
+  </Card>
   )
 }

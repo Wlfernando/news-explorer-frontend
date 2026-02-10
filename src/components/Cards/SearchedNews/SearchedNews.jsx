@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { useModalContext, useUpdatedContext, useUserContext } from '../../../hooks/useGlobalContext.js'
-import CardWithMenu from '../CardWithMenu/CardWithMenu.jsx'
+import Card from '../Card/Card.jsx'
 import './SearchedNews.css'
 
 export default function SearchedNews(props) {
   const user = useUserContext()
   const {openPopup} = useModalContext()
   const [hasLogged, setHasLogged] = useState(true)
-  const [id, setId] = useState(undefined)
+  const [id, setId] = useState('')
   const update = useUpdatedContext()
   const hasId = Boolean(id)
 
@@ -32,13 +32,13 @@ export default function SearchedNews(props) {
       update()
         .removeNotice(id)
         .then(() => {
-          setId(undefined)
+          setId('')
         })
     }
   }
 
   return (
-  <CardWithMenu {...props}>
+  <Card {...props}>
     <menu className="searched-news__menu">
       <button
         type="button"
@@ -53,6 +53,6 @@ export default function SearchedNews(props) {
         onClick={click}
       />
     </menu>
-  </CardWithMenu>
+  </Card>
   )
 }
