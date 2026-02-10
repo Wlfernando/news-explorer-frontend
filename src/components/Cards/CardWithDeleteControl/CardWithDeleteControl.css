@@ -16,6 +16,10 @@
   cursor: pointer;
   background: center no-repeat #fff;
   transition: background 200ms linear;
+
+  &:first-child {
+    cursor: unset;
+  }
 }
 
 .saved-card__button-delete {

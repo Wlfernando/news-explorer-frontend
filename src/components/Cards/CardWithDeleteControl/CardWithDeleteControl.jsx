@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import Card from '../Card/Card.jsx'
-import './SavedCard.css'
+import './CardWithDeleteControl.css'
 import { useUpdatedContext } from '../../../hooks/useGlobalContext.js';
 
-export default function SavedCard(props) {
+export default function CardWithDeleteControl(props) {
   const [clicked, setClicked] = useState(false);
   const update = useUpdatedContext()
   const format = {
