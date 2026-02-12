@@ -1,20 +1,23 @@
 const BASE_URL = 'http://localhost:3001'
 
-function getAuthorization() {
-  return {
-    "Authorization": `Bearer ${localStorage.getItem('token')}`,
-  }
-}
+const headers = {
+  "Content-Type": "application/json",
+};
 
-function setHeaders() {
-  return {
-    ...getAuthorization(),
-    "Content-Type": "application/json"
-  }
-}
+const credentials = 'include';
+
+const basicOptions = {
+  headers,
+  credentials,
+};
 
 async function confirm(res) {
-  if (res.ok) return res.json();
+  if (res.ok) {
+    if ([204, 205].includes(res.status))
+      return;
+
+    return res.json();
+  }
 
   const err = await res.json();
 
@@ -25,48 +28,58 @@ async function confirm(res) {
   return Promise.reject(err.message)
 }
 
-export function identify(body) {
-  const endpoint = Object.hasOwn(body, 'name')
-    ? '/signup'
-    : '/signin';
-
-  return fetch(BASE_URL + endpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+function getPostOpt(body) {
+  return {
+    method: 'POST',
+    headers,
     body: JSON.stringify(body),
-  })
-  .then(confirm);
+  }
+}
+
+function getPostOptWithCredentials(body) {
+  return {
+    ...getPostOpt(body),
+    credentials,
+  }
+}
+
+export function register(body) {
+  return fetch(BASE_URL + '/signup', getPostOpt(body))
+    .then(confirm)
+}
+
+export function identify(body) {
+  return fetch(BASE_URL + '/signin', getPostOptWithCredentials(body))
+    .then(confirm);
 };
 
 export function getUser() {
-  return fetch(BASE_URL + '/users/me', {
-    headers: setHeaders(),
-  })
-  .then(confirm);
+  return fetch(BASE_URL + '/users/me', basicOptions)
+    .then(confirm);
 };
 
 export function postNotice(body) {
-  return fetch(BASE_URL + '/articles', {
-    method: 'POST',
-    headers: setHeaders(),
-    body: JSON.stringify(body),
-  })
-  .then(confirm)
+  return fetch(BASE_URL + '/articles', getPostOptWithCredentials(body))
+    .then(confirm)
 };
 
 export function deleteNotice(id) {
   return fetch(BASE_URL + '/articles/' + id, {
     method: "DELETE",
-    headers: getAuthorization(),
+    ...basicOptions,
   })
-  .then(confirm)
+    .then(confirm)
 };
 
 export function getNotices() {
-  return fetch(BASE_URL + '/articles', {
-    headers: getAuthorization(),
+  return fetch(BASE_URL + '/articles', basicOptions)
+    .then(confirm)
+}
+
+export function closeStorageNews() {
+  return fetch(BASE_URL + '/sign-out', {
+    method: "DELETE",
+    ...basicOptions,
   })
-  .then(confirm)
+    .then(confirm)
 }

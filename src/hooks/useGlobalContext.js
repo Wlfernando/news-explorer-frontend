@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import useModal from "./useModal";
 import { getNews } from '../utils/NewsApi.js'
 import { signin, signup } from "../utils/auth.js";
-import { deleteNotice, getNotices, getUser, postNotice } from "../utils/MainApi.js";
+import { deleteNotice, getNotices, getUser, postNotice, closeStorageNews } from "../utils/MainApi.js";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min.js";
 
 const ModalContext = createContext({})
@@ -22,7 +22,7 @@ export const GlobalContextProvider = ({children}) => {
     { pathname } = useLocation();
 
   useEffect(() => {
-    if (Boolean(localStorage.getItem('token'))) {
+    if (document.cookie.includes('storage-access=true')) {
       getUser()
         .then(setUser)
         .catch(console.error)
@@ -87,8 +87,10 @@ export const GlobalContextProvider = ({children}) => {
     }
 
     function exit() {
-      setUser({})
-      localStorage.removeItem('token')
+      closeStorageNews()
+        .then(() => {
+          setUser({})
+        })
     }
 
     function addNotice(form) {
