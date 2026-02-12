@@ -77,7 +77,7 @@ export function getNotices() {
 }
 
 export function closeStorageNews() {
-  return fetch(BASE_URL + '/sign-out', {
+  return fetch(BASE_URL + '/signin', {
     method: "DELETE",
     ...basicOptions,
   })
