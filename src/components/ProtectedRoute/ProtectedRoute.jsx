@@ -1,25 +1,18 @@
 import { Route, Redirect } from "react-router-dom";
-import { useModalContext, useUserContext } from "../../hooks/useGlobalContext";
-import { useEffect } from "react";
+import { useModalContext } from "../../hooks/useGlobalContext";
+import useCookieStore from "../../hooks/useCookieStore";
 
 export default function ProtectedRoute({
   children,
   ...props
 }) {
   const
-    { name } = useUserContext(),
-    { openPopup } = useModalContext(),
-    isLogged = Boolean(name);
-
-  useEffect(() => {
-    if (!isLogged) {
-      openPopup('signIn')
-    }
-  }, [isLogged, openPopup])
+    access = useCookieStore(),
+    { openPopup } = useModalContext();
 
   return (
     <Route {...props}>
-      {isLogged ? children : <Redirect to={'/'} />}
+      {access ? children : (openPopup('signIn'), <Redirect to={'/'} />)}
     </Route>
   )
 }
