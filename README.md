@@ -4,6 +4,7 @@
 
 * Introducción
 * Figma
+* Autorización
 * Componentes
 * Hooks
 * Utils
@@ -15,6 +16,12 @@ Desarrollado con react para la construcción de los componentes en las dos rutas
 ## Figma
 
 [Se utilizó el siguiente diseño para el proyecto.](https://www.figma.com/file/J4KquU6h9U8eoDeOSaBPKW/Tu-proyecto-final-ESP?type=design&node-id=0-1&mode=design&t=tn50wzMiVhI8ovRg-0)
+
+## Autorización
+
+Una vez que está hecho el registro y se quiere ingresar al almacenamiento, el usuario deberá introducir sus credenciales (correo y contraseña) para que el front realice una petición para comprobar al usuario. En caso de éxito, el servidor devolverá un estado http 204 que solo actualiza las cookies; estas son dos, la primera es la clave secreta que solo puede ser manipulada por el navegador, con protección de "sameSite", y la segunda que puede ser accedida por javascript que es solo para notificarle de la presencia de la primera. 
+
+Para salir de la sesión, el usuario realiza una petición al servidor para que retire las dos cookies cambiando su valor a null y false respectivamente y coloca su caducidad de forma inmediata. De la misma manera, las cookies caducan 7 dias posteriores a su creación.
 
 ## Componentes
 
@@ -84,7 +91,7 @@ Encargado de hacer las busquedas a la "News api" y de renderizar los posibles er
 
 ## Hooks
 
-Se crearon "customeHooks" como useForm, useGlobalContext, useModal y useSize para facilitar el manejo del código. 
+Se crearon "customeHooks" como useForm, useGlobalContext, useModal, useSize y useCookieStore para facilitar el manejo del código. 
 
 ### useForm
 
@@ -101,6 +108,10 @@ Los argumentos son los nombres de los modales. Retorna un array donde su primer 
 ### useSize
 
 Responsable de cambiar los elmentos dependiendo del tamaño de la ventana.
+
+### useCookieStore
+
+Con la ayuda de useSyncExternalStore de react, se verifica si las cookies se han actualizado con un "event listener" con la api cookieStore.
 
 ## Utils
 
