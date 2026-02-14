@@ -9,11 +9,11 @@ export default function SignInModal() {
   const {signIn, openPopup, closeAllPopups} = useModalContext();
   const {inputs: {email, password}, handleChange, getValues} = useForm(title)
   const update = useUpdatedContext()
-  const [error, setError] = useState(undefined)
+  const [error, setError] = useState('')
 
   function submit() {
-    setError(undefined)
-    
+    setError('')
+
     update()
       .access(getValues())
       .catch(setError)

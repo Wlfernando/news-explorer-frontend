@@ -9,10 +9,10 @@ export default function SignUpModal() {
   const [title] = useState('Regístrate');
   const {inputs: {email, password, name}, handleChange, getValues} = useForm(title);
   const update = useUpdatedContext();
-  const [error, setError] = useState(undefined)
+  const [error, setError] = useState('')
 
   function submit() {
-    setError(undefined)
+    setError('')
 
     update()
       .register(getValues())
