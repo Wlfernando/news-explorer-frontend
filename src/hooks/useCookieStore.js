@@ -8,12 +8,12 @@ function suscribe(listener) {
   }
 }
 
-function takeSnapShot() {
-  return document.cookie.includes('storage-access=true');
+function takeSnapShot(field) {
+  return () => document.cookie.includes(field);
 }
 
-export default function useCookie() {
-  const cookie = useSyncExternalStore(suscribe, takeSnapShot);
+export default function useCookie(field) {
+  const cookie = useSyncExternalStore(suscribe, takeSnapShot(field));
 
   return cookie;
 }

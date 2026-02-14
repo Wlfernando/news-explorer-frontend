@@ -4,12 +4,14 @@ import { getNews } from '../utils/NewsApi.js'
 import { signin, signup } from "../utils/auth.js";
 import { deleteNotice, getNotices, getUser, postNotice, closeStorageNews } from "../utils/MainApi.js";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min.js";
+import useCookieStore from "./useCookieStore.js";
 
 const ModalContext = createContext({})
 const UserContext = createContext({})
 const UpdatedContext = createContext({})
 const FetchedNewsContext = createContext([])
 const TotalPagesContext = createContext({})
+const AccessContext = createContext(false)
 
 export const GlobalContextProvider = ({children}) => {
   const
@@ -19,15 +21,16 @@ export const GlobalContextProvider = ({children}) => {
     [total, setTotal] = useState(0),
     [keyWord, setKeyWord] = useState(''),
     [savedNews, setSavedNews] = useState([]),
-    { pathname } = useLocation();
+    { pathname } = useLocation(),
+    haveAccess = useCookieStore('storage-access=true');
 
   useEffect(() => {
-    if (document.cookie.includes('storage-access=true')) {
+    if (haveAccess) {
       getUser()
         .then(setUser)
         .catch(console.error)
     }
-  }, [])
+  }, [haveAccess])
 
   useEffect(() => {
     if (pathname === '/saved-news') {
@@ -121,7 +124,9 @@ export const GlobalContextProvider = ({children}) => {
       <UpdatedContext.Provider value={update}>
         <FetchedNewsContext.Provider value={{news, savedNews}}>
           <TotalPagesContext.Provider value={total}>
-            {children}
+            <AccessContext.Provider value={haveAccess}>
+              {children}
+            </AccessContext.Provider>
           </TotalPagesContext.Provider>
         </FetchedNewsContext.Provider>
       </UpdatedContext.Provider>
@@ -134,3 +139,4 @@ export const useUserContext = () => useContext(UserContext)
 export const useUpdatedContext = () => useContext(UpdatedContext)
 export const useFetchedNewsContext = () => useContext(FetchedNewsContext)
 export const useTotalPagesContext = () => useContext(TotalPagesContext)
+export const useAccessContext = () => useContext(AccessContext)

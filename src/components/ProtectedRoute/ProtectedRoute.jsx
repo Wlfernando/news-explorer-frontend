@@ -1,18 +1,17 @@
 import { Route, Redirect } from "react-router-dom";
-import { useModalContext } from "../../hooks/useGlobalContext";
-import useCookieStore from "../../hooks/useCookieStore";
+import { useAccessContext, useModalContext } from "../../hooks/useGlobalContext";
 
 export default function ProtectedRoute({
   children,
   ...props
 }) {
   const
-    access = useCookieStore(),
+    haveAccess = useAccessContext(),
     { openPopup } = useModalContext();
 
   return (
     <Route {...props}>
-      {access ? children : (openPopup('signIn'), <Redirect to={'/'} />)}
+      {haveAccess ? children : (openPopup('signIn'), <Redirect to={'/'} />)}
     </Route>
   )
 }
