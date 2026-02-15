@@ -15,7 +15,7 @@ export default function SearchBar() {
       setError('Por favor, introduzca una palabra clave')
       return null
     }
-    
+
     setLoading(true)
 
     update()
@@ -51,6 +51,7 @@ export default function SearchBar() {
       placeholder={error ?? "Introduce un tema"} name="search"
       onChange={change}
       value={input}
+      pattern='\w+'
     />
   </Form>
   )
