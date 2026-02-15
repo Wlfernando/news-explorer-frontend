@@ -15,10 +15,14 @@ export default function SearchBar() {
       setError('Por favor, introduzca una palabra clave')
       return null
     }
+    
     setLoading(true)
 
     update()
       .handleSearch(input)
+      .then(() => {
+        setError(undefined)
+      })
       .catch((e) => {
         setInput('')
         setError(e)
@@ -40,7 +44,7 @@ export default function SearchBar() {
     modBtn='search'
     onSubmit={submit}
     isLoading={loading}
-    >
+  >
     <input
       className={"form__search" + (Boolean(error) ? ' form__search_error' : '')}
       type="text"

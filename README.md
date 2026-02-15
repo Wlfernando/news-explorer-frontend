@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# Proyecto de búsqueda de noticias
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descripción general
 
-## Available Scripts
+* Introducción
+* Figma
+* Autorización
+* Componentes
+* Hooks
+* Utils
 
-In the project directory, you can run:
+## Introducción
 
-### `npm start`
+Desarrollado con react para la construcción de los componentes en las dos rutas disponibles actualmente en la app. La cabecera tiene un buscador de noticias con la integración de News Api y un backend para guardar en favoritos las noticias seleccionadas como favoritas. Se encuentra una sección de mi persona como autor del proyecto. La ruta para visualizar las noticias guardadas como favoritas es "/saved-news".
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Figma
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[Se utilizó el siguiente diseño para el proyecto.](https://www.figma.com/file/J4KquU6h9U8eoDeOSaBPKW/Tu-proyecto-final-ESP?type=design&node-id=0-1&mode=design&t=tn50wzMiVhI8ovRg-0)
 
-### `npm test`
+## Autorización
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Una vez que está hecho el registro y se quiere ingresar al almacenamiento, el usuario deberá introducir sus credenciales (correo y contraseña) para que el front realice una petición para comprobar al usuario. En caso de éxito, el servidor devolverá un estado http 204 que solo actualiza las cookies; estas son dos, la primera es la clave secreta que solo puede ser manipulada por el navegador, con protección de "sameSite", y la segunda que puede ser accedida por javascript que es solo para notificarle de la presencia de la primera. 
 
-### `npm run build`
+Para salir de la sesión, el usuario realiza una petición al servidor para que retire las dos cookies cambiando su valor a null y false respectivamente y coloca su caducidad de forma inmediata. De la misma manera, las cookies caducan 7 dias posteriores a su creación.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Componentes
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Header
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Componente llamado HeaderWithTools para poder modificar su contenido cuando sea necesario, aqui se utilizó en la ruta "main" y con la ruta "/saved-news" con los componentes HomeHeader (con el componente de busqueda) y SavedHeader (con el componente de información de noticas guardadas).
 
-### `npm run eject`
+### Cards
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+El componente Card guarda en un estado la llamada a la instancia Intl dentro de una función para que solo se ejecute una única vez pese a los renderizados. Aunque la función no tarda en ejecutarse, se adoptó este patrón de "memoización" como futura referencia del hook al iniciar un estado con una función como argumento.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```javascript
+const [formatedDate] = useState(() => new Intl.DateTimeFormat('es-MX', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(new Date(publishedAt)))
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Para ajustar las lineas del título y párrafo a máximo 3 y 4 respectivamente, se empleó este [estandar](https://css-tricks.com/line-clampin/):
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```css
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+}
+```
 
-## Learn More
+Para extender las capacidades de Card, se envolvió con HOCs nombrándolos con el uso de la convención "with". Por lo tanto, ahora las cartas tienen la capacidad de ser guardadas en el servidor propio o ser eliminadas de este mismo.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Form
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+El componente de formulario tiene la funcionalidad de prevenir el comportamiento por defecto del elemento form ademas de permitirnos validar el contenido de los campos permitiendonos presionar el boton de envio. Esta validación es opcional pasandolo como atributo al componente.
 
-### Code Splitting
+### HamburgerBtn
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Es el boton en forma de hamburguesa con la animación de abrir y cerrar.
 
-### Analyzing the Bundle Size
+### Loader
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Un span que se renderiza cada vez que esperamos la respuesta asyncrona de una api.
 
-### Making a Progressive Web App
+### Main
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Se encuentran los componentes donde se van a renderizar todos los contenidos de las diferentes rutas.
 
-### Advanced Configuration
+### Modals/popups
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+El componente de modal se utiliza para los diferentes elementos que se ocuparan aquí: "infotooltip", "sign-in", "sign-up". El modalWithForm es la base de "sign-in" y "sign-up".
 
-### Deployment
+### Navegation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Es el portador del menu encargado de las rutas y el cierre del perfil o abrir el popup para registrarse.
 
-### `npm run build` fails to minify
+### NewsInfo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Nos indica la cantidad de noticias guardadas y el nombre de las palabras clave empleados en la busqueda ordenado de mayor a menor ( los dos primeros y los posteriores solo la cantidad de palabras claves empleadas).
+
+### ProtectedRoute
+
+Prohibe el acceso a los usuarios que no estan registrados, invitandoles a autenticarse.
+
+### SearchBar
+
+Encargado de hacer las busquedas a la "News api" y de renderizar los posibles errores que se puedan encontrar o simplemente señalar la falta de contenido con la palabra clave introducida.
+
+## Hooks
+
+Se crearon "customeHooks" como useForm, useGlobalContext, useModal, useSize y useCookieStore para facilitar el manejo del código. 
+
+### useForm
+
+Se utiliza el nombre del formulario para recuperar los inputs del mismo y asi manejar los errores de los campos controlados. Retorna un objeto con inputs que contiene el valor, el mensaje de error y un valor booleano para renderizar el error. GetValues retorna unicamente los inputs con sus valores para enviarlos a la api. Un Reset para reestablecer los valores predeterminados. Y por supuesto retorna un controlador para los cambios.
+
+### useGlobalContext
+
+Maneja todos los estados que se ocupan en la app. Se manejan todos los provider en este lugar y es utilizado en el archivo index.js para envolver la aplicación completa.
+
+### useModal
+
+Los argumentos son los nombres de los modales. Retorna un array donde su primer valor es un objeto con los nombres de los modales bajo su responsabilidad y sus valores son booleanos. El segundo valor del array es una funcion para abrir un modal dependiendo del argumento que corresponda con los nombres indicados en su inicialización del useModal. El tercer y ultimo elemento del array es una función para cerrar todos los modales.
+
+### useSize
+
+Responsable de cambiar los elmentos dependiendo del tamaño de la ventana.
+
+### useCookieStore
+
+Con la ayuda de useSyncExternalStore de react, se verifica si las cookies se han actualizado con un "event listener" con la api cookieStore.
+
+## Utils
+
+Aqui se encuentran los archivos de autorización, constantes, los requerimientos a las apis, etc.

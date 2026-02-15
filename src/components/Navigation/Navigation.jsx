@@ -2,17 +2,18 @@ import './Navigation.css';
 import useSize from '../../hooks/useSize';
 import HamburgerBtn from '../HamburgerBtn/HamburgerBtn';
 import { NavLink } from 'react-router-dom';
-import { useModalContext, useUserContext } from '../../hooks/useGlobalContext';
+import { useAccessContext, useModalContext, useUpdatedContext, useUserContext } from '../../hooks/useGlobalContext';
 
 export default function Navigation({onOpen, classMod}) {
-  const {openPopup, setUser} = useModalContext();
+  const {openPopup} = useModalContext();
   const size = useSize();
-  const {email} = useUserContext()
+  const {name} = useUserContext()
+  const update = useUpdatedContext()
+  const haveAccess = useAccessContext();
 
   const [isOpen] = onOpen;
-  const isLog = Boolean(email);
-  const txtBtn = isLog ? `${email.split('@')[0]} ` : 'Iniciar sesión';
-  const imgBtn = isLog ?
+  const txtBtn = haveAccess ? `${name} ` : 'Iniciar sesión';
+  const imgBtn = haveAccess ?
     <svg className={`navigation__logout-icon header__svg_route_${classMod}`}
       width="18"
       height="16"
@@ -30,8 +31,8 @@ export default function Navigation({onOpen, classMod}) {
   const small = size !== 'desktop';
 
   function setBehavior() {
-    if(isLog) {
-      setUser({})
+    if(haveAccess) {
+      update().exit()
     } else {
       openPopup('signIn')
     }
@@ -42,7 +43,7 @@ export default function Navigation({onOpen, classMod}) {
     {small && <HamburgerBtn onOpen={onOpen} classMod={classMod} />}
     <menu className={`navigation__menu${isOpen ? ' navigation__menu_active' : ''}`} inert={small && !isOpen ? 'true' : undefined}>
       <NavLink to='/' className='navigation__link' >Inicio</NavLink>
-      {isLog && <NavLink to='/saved-news' className='navigation__link' >Articulos guardados</NavLink>}
+      {haveAccess && <NavLink to='/saved-news' className='navigation__link' >Articulos guardados</NavLink>}
       <button onClick={setBehavior} type="button" className={`navigation__button header__button_route_${classMod}`}>{txtBtn}{imgBtn}</button>
     </menu>
   </>
