@@ -1,8 +1,8 @@
-import './HeaderWithTools.css'
+import './Header.css'
 import Navigation from '../../Navigation/Navigation.jsx';
 import { useState } from 'react';
 
-export default function HeaderWithTools({
+export default function Header({
   children,
   classMod,
 }) {

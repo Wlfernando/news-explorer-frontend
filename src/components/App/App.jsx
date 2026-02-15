@@ -3,8 +3,8 @@ import Footer from '../Footer/Footer.jsx'
 import './App.css'
 import Home from '../Main/Home/Home.jsx'
 import SavedNews from '../Main/SavedNews/SavedNews.jsx'
-import SavedHeader from '../Header/SavedHeader/SavedHeader.jsx'
-import HomeHeader from '../Header/HomeHeader/HomeHeader.jsx'
+import HeaderWithInfo from '../Header/HeaderWithInfo/HeaderWithInfo.jsx'
+import HeaderWithSearch from '../Header/HeaderWithSearch/HeaderWithSearch.jsx'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.jsx'
 
 export default function App() {
@@ -12,11 +12,11 @@ export default function App() {
     <div className='page'>
       <Switch>
         <ProtectedRoute path='/saved-news'>
-          <SavedHeader />
+          <HeaderWithInfo />
           <SavedNews />
         </ProtectedRoute>
         <Route path='/' >
-          <HomeHeader />
+          <HeaderWithSearch />
           <Home />
         </Route>
       </Switch>
