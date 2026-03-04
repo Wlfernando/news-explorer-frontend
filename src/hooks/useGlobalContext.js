@@ -1,8 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import useModal from "./useModal";
-import { getNews } from '../utils/NewsApi.js'
 import { signin, signup } from "../utils/auth.js";
-import { deleteNotice, getNotices, getUser, postNotice, closeStorageNews } from "../utils/MainApi.js";
+import { deleteNotice, getNotices, getUser, postNotice, closeStorageNews, getNews } from "../utils/MainApi.js";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min.js";
 import useCookieStore from "./useCookieStore.js";
 
