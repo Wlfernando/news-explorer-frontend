@@ -51,7 +51,7 @@ export default function SearchBar() {
       placeholder={error ?? "Introduce un tema"} name="search"
       onChange={change}
       value={input}
-      pattern='\w+'
+      pattern='[^<>&"&#39;]+'
     />
   </Form>
   )
