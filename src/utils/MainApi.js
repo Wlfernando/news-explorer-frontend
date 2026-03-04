@@ -1,3 +1,5 @@
+import { sixDays } from "./const";
+
 const BASE_URL = 'http://localhost:3001'
 
 const headers = {
@@ -81,5 +83,18 @@ export function closeStorageNews() {
     method: "DELETE",
     ...basicOptions,
   })
+    .then(confirm)
+}
+
+let searchParams = '';
+
+export function getNews({q, page = 1}) {
+  if (q) {
+    const from = new Date(Date.now() - sixDays).toISOString().slice(0, -5);
+    const today = new Date().toISOString().slice(0, -5);
+    searchParams = `q=${encodeURIComponent(q)}&from=${from}&to=${today}&`;
+  }
+
+  return fetch(BASE_URL + '/news?' + searchParams + 'page=' + page)
     .then(confirm)
 }
