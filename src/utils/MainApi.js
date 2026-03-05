@@ -1,6 +1,4 @@
-import { sixDays } from "./const";
-
-const BASE_URL = 'http://localhost:3001'
+import { sixDays, BASE_URL } from "./const";
 
 const headers = {
   "Content-Type": "application/json",
