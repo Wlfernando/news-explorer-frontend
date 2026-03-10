@@ -16,6 +16,9 @@ async function confirm(res) {
     if ([204, 205].includes(res.status))
       return;
 
+    if (res.headers.get('Content-Type').includes('text/plain'))
+      return res.text();
+
     return res.json();
   }
 

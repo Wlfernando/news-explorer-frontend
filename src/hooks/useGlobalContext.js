@@ -91,6 +91,7 @@ export const GlobalContextProvider = ({children}) => {
     function exit() {
       closeStorageNews()
         .then(() => {
+          document.cookie = 'storage-access=false';
           setUser({})
         })
     }

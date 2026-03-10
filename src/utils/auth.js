@@ -6,5 +6,10 @@ export function signup({name, email, password}) {
 
 export function signin({email, password}) {
   return identify({email, password})
-    .then(getUser);
+    .then((UTCdate) => {
+      const user = getUser();
+      document.cookie = `storage-access=true;expires=${UTCdate}`;
+
+      return user
+    })
 };
